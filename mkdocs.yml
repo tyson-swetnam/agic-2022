@@ -28,12 +28,17 @@ theme:
 
   # Default values, taken from mkdocs_theme.yml
   language: en
-  palette:
-    scheme: default
-    primary: blue
-    accent: pink
+  palette: 
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - scheme: slate 
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
   font:
-    text: Google Sans
+    text: Montserrat
     code: Regular
   favicon: assets/favicon.png
   icon:
