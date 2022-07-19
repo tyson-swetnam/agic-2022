@@ -3,16 +3,18 @@ on:
   push:
     branches:
       - main
-
 jobs:
   build:
     name: Deploy docs
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout main
-        uses: actions/checkout@v1
-      - name: run requirements file
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.9  
+        name: run requirements file
         run:  pip install -r requirements_mkdocs.txt
+      - name: Checkout main
+        uses: actions/checkout@v2   
       - name: Deploy docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@1.16
         env:
