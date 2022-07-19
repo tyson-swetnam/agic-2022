@@ -1,0 +1,96 @@
+site_name: agic-2022
+site_description: AGIC Cloud Native Data Workship
+site_author: Tyson Lee Swetnam
+site_url: https://tyson-swetnam.github.io/agic-2022/
+
+# Repository
+repo_name: agic-2022
+repo_url: https://github.com/tyson-swetnam/agic-2022
+edit_uri: edit/main/docs/
+# Copyright
+copyright: 'Copyright &copy; 2022 - 2023 Tyson Lee Swetnam'
+
+
+# Configuration
+theme:
+  name: 'material'
+
+  # 404 page
+  static_templates:
+    - 404.html
+
+  # Don't include MkDocs' JavaScript
+  include_search_page: false
+  search_index_only: true
+
+  # Default values, taken from mkdocs_theme.yml
+  language: en
+  palette:
+    scheme: default
+    primary: blue
+    accent: pink
+  font:
+    text: Google Sans
+    code: Regular
+  favicon: assets/favicon.png
+  icon:
+    logo: logo
+
+# Options
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/tyson-swetnam/agic-2022.git
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - abbr
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# Page tree
+nav:
+  - Introduction: index.md
+  - Integrated Development Environments: ide.md
+  - Spatio-Temporal Asset Catalogs: stac.md
+  - Raster Data:
+    - Cloud Optimized GeoTIFF: cog.md
+    - Zarr: zarr.md
+    - XArray: xarray.md
+  - Vector Data:
+    - GeoJSON: geojson.md
+    - Cloud Optimized Point Clouds: copc.md
