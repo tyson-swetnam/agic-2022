@@ -16,6 +16,6 @@ jobs:
       - name: run requirements file
         run:  pip install -r requirements_mkdocs.txt 
       - name: Deploy docs
-        uses: mhausenblas/mkdocs-deploy-gh-pages@1.16
+        run: mkdocs gh-deploy --force
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
