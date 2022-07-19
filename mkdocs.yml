@@ -37,7 +37,7 @@ theme:
     code: Regular
   favicon: assets/favicon.png
   icon:
-    logo: logo
+    logo: material/cloud-tags
 
 # Options
 extra:
