@@ -90,14 +90,14 @@ plugins:
           include_source: True
           ignore_h1_titles: True
           execute: True
-          execute_ignore: "../assets/*.ipynb"
+          execute_ignore: "notebooks/*.ipynb"
 
 # Page tree
 nav:
   - Introduction: index.md
   - Integrated Development Environments: ide.md
   - Jupyter Notebooks:
-    - COG Notebook: ../assets/test1.ipynb
+    - COG Notebook: notebooks/test1.ipynb
   - Spatio-Temporal Asset Catalogs: stac.md
   - Raster Data:
     - Cloud Optimized GeoTIFF: cog.md
