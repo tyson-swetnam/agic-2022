@@ -95,9 +95,9 @@ plugins:
 # Page tree
 nav:
   - Introduction: index.md
-  - Integrated Development Environments: ide
+  - Integrated Development Environments: ide.md
   - Jupyter Notebooks:
-    - COG Notebook: assets/test1.ipynb
+    - COG Notebook: ../assets/test1.ipynb
   - Spatio-Temporal Asset Catalogs: stac.md
   - Raster Data:
     - Cloud Optimized GeoTIFF: cog.md
