@@ -1,6 +1,8 @@
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip){target=_blank} [![license](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://opensource.org/licenses/GPL-3.0){target=_blank} 
 
-# Introduction
+# Hands On with Cloud Native Data Types
+
+:material-cog: :material-layers-triple: :material-vector-polyline: :material-compass-rose: :material-math-compass:
 
 The purpose of this workshop is to introduce "cloud native" data types used for geographic information science. 
 
