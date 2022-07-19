@@ -18,13 +18,19 @@ This website follows the [FAIR](https://www.go-fair.org/fair-principles/){target
 | Lessons | Estimated Time to Complete | Link |
 |---------|----------------------------|------|
 | Introduction to Cloud Native Data Types | 15 minutes | [presentation](){target=_blank} |
-| Hands on with geoJSON | 15 minutes | [GeoJSON.io](https://geojson.io){target=_blank} |
+| Hands on with GeoJSON | 30 minutes | [GeoJSON.io](https://geojson.io){target=_blank} |
+| Hands on with Cloud Optimized GeoTIFF | 30 minutes | [cogeo.org](https://cogeo.org){target=_blank} |
+| Break | 10 minutes | |
+| Hands on with XArray & Zarr | 30 minutes | |
+| Hands on with Cloud Optimized Point Clouds | 30 minutes | |
+| Hands on with Spatiotemporal Asset Catalogs | 30 minutes | | 
+| Summary and Conclusion | 5 minutes | | 
 
-## Workshop pre-requisite
+### Workshop pre-requisites
 
 * a laptop with an active wifi connection
 
-## not-required but useful
+#### recommended skills 
 
 * a basic understanding of the [Command Line Interface (UNIX)](https://swcarpentry.github.io/shell-novice/){target=_blank}
 * a basic understanding of [Python3](https://www.geeksforgeeks.org/introduction-to-python3/#:~:text=Python%20is%20a%20high%2Dlevel,them%20readable%20all%20the%20time.){target=_blank}
