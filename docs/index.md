@@ -5,7 +5,7 @@
 Author(s): 
 [Tyson Lee Swetnam](https://tyson-swetnam.github.io/) [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](http://orcid.org/0000-0002-6639-7181)
 [Aaryn Olsson]()
-[Kiri Carini]()
+[Kiri Carini]()[![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](http://orcid.org/0000-0002-9630-0432)
 
 ## About
 
