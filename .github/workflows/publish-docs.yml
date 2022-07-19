@@ -11,9 +11,8 @@ jobs:
     steps:
       - name: Checkout main
         uses: actions/checkout@v1
-      - name: remove requirements file
-        run: |
-          rm -Rf requirements.txt
+      - name: run requirements file
+        run:  pip install -r requirements_mkdocs.txt
       - name: Deploy docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@1.16
         env:
