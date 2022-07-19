@@ -82,10 +82,22 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tilde
 
+plugins:
+    - search
+    - mkdocstrings
+    - git-revision-date
+    - mkdocs-jupyter:
+          include_source: True
+          ignore_h1_titles: True
+          execute: True
+          execute_ignore: "workshops/*.ipynb"
+
 # Page tree
 nav:
   - Introduction: index.md
-  - Integrated Development Environments: ide.md
+  - Integrated Development Environments: ide
+  - Jupyter Notebooks:
+    - COG Notebook: assets/test1.ipynb
   - Spatio-Temporal Asset Catalogs: stac.md
   - Raster Data:
     - Cloud Optimized GeoTIFF: cog.md
