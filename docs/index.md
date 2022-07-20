@@ -6,7 +6,7 @@
 
 The purpose of this workshop is to introduce "cloud native" data types used for geographic information science. 
 
-<a href="[https://learning.cyverse.org](https://stacspec.org/)" target="blank" rel="stac">![stac]([https://github.com/tyson-swetnam/home/raw/main/assets/2020-02-foss.png](https://d33wubrfki0l68.cloudfront.net/22691a3c3002324451ed99f4009de8aab761e1b7/d24da/public/images-original/stac-01.png)){ width="100" } </a>
+<a href="https://learning.cyverse.org" target="blank" rel="stac">![stac](https://d33wubrfki0l68.cloudfront.net/22691a3c3002324451ed99f4009de8aab761e1b7/d24da/public/images-original/stac-01.png){ width="100" } </a>
 
 #### Instructors(s): 
 [Tyson Lee Swetnam](https://tyson-swetnam.github.io/){target=_blank} [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](http://orcid.org/0000-0002-6639-7181){target=_blank},
