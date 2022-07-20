@@ -10,7 +10,26 @@ edit_uri: edit/main/docs/
 # Copyright
 copyright: 'Copyright &copy; 2022 - 2023 Tyson Lee Swetnam'
 
-
+# Page tree
+nav:
+  - Introduction: index.md
+  - Integrated Development Environments: ide.md
+  - Vectors:
+    - GeoJSON: geojson.md
+    - Cloud Optimized Point Clouds: copc.md
+  - Rasters:
+    - Cloud Optimized GeoTiff: cog.md
+    - X Array: xarray.md
+    - Zarr: zarr.md
+  - Spatio-Temporal Asset Catalogs: stac.md
+  - Jupyter Notebook Examples:
+    - GeoJSON: notebooks/geojson.ipynb
+    - COPC: notebooks/copc.ipynb
+    - COG: notebooks/cog.ipynb
+    - XArray: notebooks/xarray.ipynb
+    - Zarr: notebooks/zarr.ipynb
+    - STAC: notebooks/stac.ipynb
+    
 # Configuration
 theme:
   name: 'material'
@@ -99,18 +118,3 @@ plugins:
           ignore_h1_titles: True
           execute: True
           execute_ignore: "notebooks/*.ipynb"
-
-# Page tree
-nav:
-  - Introduction: index.md
-  - Integrated Development Environments: ide.md
-  - Jupyter Notebooks:
-    - COG Notebook: notebooks/test1.ipynb
-  - Spatio-Temporal Asset Catalogs: stac.md
-  - Raster Data:
-    - Cloud Optimized GeoTIFF: cog.md
-    - Zarr: zarr.md
-    - XArray: xarray.md
-  - Vector Data:
-    - GeoJSON: geojson.md
-    - Cloud Optimized Point Clouds: copc.md
