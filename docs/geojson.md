@@ -1,4 +1,4 @@
-# GeoJSON (Geo+JSON)
+# :material-code-json: GeoJSON (Geo+JSON)
 
 [JavaScript Object Notation (JSON)](https://www.json.org/json-en.html){target=_blank} is a lightweight, text-based, language-independent data interchange format. 
 
@@ -43,11 +43,19 @@
 
 * [geojson.io](https://geojson.io){target=_blank}
 * [rfc7946](https://datatracker.ietf.org/doc/html/rfc7946){target=_blank}
-
-??? Info "GeoJSON Schema"
   
-    Point
-    
+### :material-angle-acute: Geometry
+
+There are seven types of geometric shapes which can be defined in GeoJSON
+
+Point, LineString and Polygon have single type geometry objects 
+
+MultiPoint, MultiLineString, and MultiPolygon are multipart geometry objects
+
+#### :material-map-marker: Point
+
+??? Info ":material-code-json: GeoJSON Point Schema"
+
     ```
     {
       "type": "Feature",
@@ -60,20 +68,19 @@
       }
     }
     ```
-  
-    Line
-    
-    ```
-    
-    ```
-    
-    Polygon
-    
-    ```
-    
-    
-    ```
-    
+
+#### :material-map-marker-multiple: MultiPoint
+
+#### :material-vector-polyline:LineString 
+
+#### :material-vector-polyline::material-vector-line: MultiLineString
+
+#### :material-vector-polygon: Polygon
+
+#### :material-vector-combine: MultiPolygon
+
+#### :material-layers-triple-outline: GeometryCollection
+
 
 [TopoJSON](https://github.com/topojson/topojson){target=_blank} is an extension of GeoJSON that encodes topology and is more efficient than GeoJSON.
 
