@@ -6,7 +6,11 @@
 
 The purpose of this workshop is to introduce "cloud native" data types used for geographic information science. 
 
-<a href="https://learning.cyverse.org" target="blank" rel="stac">![stac](https://d33wubrfki0l68.cloudfront.net/22691a3c3002324451ed99f4009de8aab761e1b7/d24da/public/images-original/stac-01.png){ width="100" } </a>
+<a href="https://geojson.io" target="blank" rel="geojson">![geojson](https://brands.home-assistant.io/_/geo_json_events/logo.png){ height="100" } </a>
+<a href="https://stacspec.org" target="blank" rel="stac">![stac](https://d33wubrfki0l68.cloudfront.net/22691a3c3002324451ed99f4009de8aab761e1b7/d24da/public/images-original/stac-01.png){ height="100" } </a>
+<a href="https://copc.io" target="blank" rel="copc>![copc](https://copc.io/COPC_IO-Logo-2color.png){ height="100" } </a>
+<a href="https://zarr.readthedocs.io" target="blank" rel="zarr">![zarr](https://zarr.readthedocs.io/en/stable/_static/logo1.png){ height="100" } </a>
+<a href="https://docs.xarray.dev" target="blank" rel="xarray">![xarray](https://docs.xarray.dev/en/stable/_static/dataset-diagram-logo.png){ height="100" } </a>
 
 #### Instructors(s): 
 [Tyson Lee Swetnam](https://tyson-swetnam.github.io/){target=_blank} [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](http://orcid.org/0000-0002-6639-7181){target=_blank},
