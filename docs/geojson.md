@@ -11,8 +11,8 @@
     {
       "$id": "https://example.com/geographical-location.schema.json",
       "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "title": "Longitude and Latitude Values",
-      "description": "A geographical coordinate.",
+      "title": "AGIC Venue",
+      "description": "A geographical coordinate where this workshop is being taught",
       "required": [ "latitude", "longitude" ],
       "type": "object",
       "properties": {
@@ -30,12 +30,12 @@
     }
     ```
     
-    Data
+    **data**
     
     ```
     {
-      "latitude": 34.550,
-      "longitude": -112.447
+      "latitude": 34.5510,
+      "longitude": -112.4471
     }
     ```
 
@@ -57,27 +57,34 @@ MultiPoint, MultiLineString, and MultiPolygon are multipart geometry objects
 ??? Info ":material-code-json: GeoJSON Point Schema"
 
     ```
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-112.447, 34.550]
-      },
-      "properties": {
-        "name": "Prescott Arizona"
-      }
+    { 
+      "type": "Point",
+      "coordinates": [-112.4471, 34.5510]
     }
     ```
 
 #### :material-map-marker-multiple: MultiPoint
 
+??? Info ":material-code-json: GeoJSON MultiPoint Schema"
+
+    ```
+    { 
+      "type": "MultiPoint", 
+      "coordinates": [ [-112, 35], [-112, 34], [-113, 34], [-113, 35] ]
+    }
+    ```
+
 #### :material-vector-polyline:LineString 
+
 
 #### :material-vector-polyline::material-vector-line: MultiLineString
 
+
 #### :material-vector-polygon: Polygon
 
+
 #### :material-vector-combine: MultiPolygon
+
 
 #### :material-layers-triple-outline: GeometryCollection
 
@@ -89,3 +96,10 @@ MultiPoint, MultiLineString, and MultiPolygon are multipart geometry objects
     ```
     
     ```
+
+
+# GeoJSON Webpages
+
+[geojson.io](https://geojson.io/){target=_blank} - create, view, edit GeoJSON in your browser
+
+[python-geojson](https://python-geojson.readthedocs.io/en/latest/){target=_blank}
