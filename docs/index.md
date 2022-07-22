@@ -22,24 +22,30 @@ The purpose of this workshop is to introduce "cloud native" data types used for 
 
 This website follows the [FAIR](https://www.go-fair.org/fair-principles/){target=_blank} and [CARE](https://www.gida-global.org/care){target=_blank} data principles and hopes to help further open science. 
 
-# Agenda
+## Agenda
 
 | Lessons | Estimated Time to Complete | Link |
 |---------|----------------------------|------|
 | Introduction to Cloud Native Data Types | 15 minutes | [presentation](){target=_blank} |
-| Hands on with GeoJSON | 30 minutes | [GeoJSON.io](https://geojson.io){target=_blank} |
-| Hands on with Cloud Optimized GeoTIFF | 30 minutes | [cogeo.org](https://cogeo.org){target=_blank} |
+| [Hands on with GeoJSON](geojson.md) | 30 minutes | [GeoJSON.io](https://geojson.io){target=_blank} |
+| [Hands on with Cloud Optimized GeoTIFF](cog.md) | 30 minutes | [cogeo.org](https://cogeo.org){target=_blank} |
 | Break | 10 minutes | |
-| Hands on with XArray & Zarr | 30 minutes | [Xarray](https://docs.xarray.dev/en/stable/){target=_blank}, [Zarr](https://zarr.readthedocs.io/en/stable/){target=_blank} |
-| Hands on with Cloud Optimized Point Clouds | 30 minutes | [COPC](https://copc.io/){target=_blank} |
-| Hands on with Spatio-Temporal Asset Catalogs | 30 minutes | [STAC](https://stacspec.org/){target=_blank} | 
+| [Hands on with XArray & Zarr](xarray.md) | 30 minutes | [Xarray](https://docs.xarray.dev/en/stable/){target=_blank}, [Zarr](https://zarr.readthedocs.io/en/stable/){target=_blank} |
+| [Hands on with Cloud Optimized Point Clouds](copc.md) | 30 minutes | [COPC](https://copc.io/){target=_blank} |
+| [Hands on with Spatio-Temporal Asset Catalogs](stac.md) | 30 minutes | [STAC](https://stacspec.org/){target=_blank} | 
 | Summary and Conclusion | 5 minutes | | 
 
-### Workshop pre-requisites
+## Pre-requisites
 
 * a laptop with an active wifi connection
 
-#### recommended skills 
+### helpful but not required
 
 * a basic understanding of the [Command Line Interface (UNIX)](https://swcarpentry.github.io/shell-novice/){target=_blank}
 * a basic understanding of [Python3](https://www.geeksforgeeks.org/introduction-to-python3/#:~:text=Python%20is%20a%20high%2Dlevel,them%20readable%20all%20the%20time.){target=_blank}
+
+## Light reading
+
+Gentemann, C. L., et al. (2021). “Science Storms the Cloud”. AGU Advances, 2, e2020AV000354. https://doi.org/10.1029/2020AV000354
+
+Abernathey, R. P.  et al. (2021) "Cloud-Native Repositories for Big Scientific Data," in Computing in Science & Engineering, vol. 23, no. 2, pp. 26-35, 1 March-April 2021, https://doi.org/10.1109/MCSE.2021.3059437
