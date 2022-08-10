@@ -278,6 +278,8 @@ NLD GeoJSON remove "FeatureCollection"
 
 [python-geojson](https://python-geojson.readthedocs.io/en/latest/){target=_blank}
 
+[GeoJSON in ArcGIS Online](https://doc.arcgis.com/en/arcgis-online/reference/geojson.htm)
+
 [GeoJSON in BigQuery](https://cloud.google.com/blog/topics/developers-practitioners/using-geojson-bigquery-geospatial-analytics){target=_blank}
 
 [JSON Formatter Chrome Plugin](https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa?hl=en){target=_blank}
