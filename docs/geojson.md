@@ -7,7 +7,7 @@
 
 ??? Info "an example JSON Schema for a geospatial object"
   
-    ```
+    ``` json
     {
       "$id": "https://example.com/geographical-location.schema.json",
       "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -32,7 +32,7 @@
     
     **data**
     
-    ```
+    ``` json
     {
       "latitude": 34.5510,
       "longitude": -112.4471
@@ -61,7 +61,7 @@ A Point geometry is represented by a single set of latitude and a longitude coor
 
 ??? Info ":material-code-json: GeoJSON Point Schema"
 
-    ``` 
+    ``` json
     { 
       "type": "Point",
       "coordinates": [-112.4471, 34.5510]
@@ -72,7 +72,7 @@ A Point geometry is represented by a single set of latitude and a longitude coor
 
 ??? Info ":material-code-json: GeoJSON LineString Schema"
 
-    ```
+    ``` json
     {
       "type": "LineString",
       "coordinates": [ 
@@ -85,7 +85,7 @@ A Point geometry is represented by a single set of latitude and a longitude coor
 
 ??? Info ":material-code-json: GeoJSON Polygon Schema"
 
-    ```
+    ``` json
     {
       "type": "Polygon",
       "coordinates": [
@@ -101,7 +101,7 @@ A MultiPoint geometry is represented by multiple coordinates
 
 ??? Info ":material-code-json: GeoJSON MultiPoint Schema"
 
-    ```
+    ``` json
     {
       "type": "MultiPoint",
       "coordinates": [
@@ -115,7 +115,7 @@ A MultiPoint geometry is represented by multiple coordinates
 
 ??? Info ":material-code-json: GeoJSON MultiLineString Schema"
 
-    ```
+    ``` json
     {
       "type": "MultiLineString",
       "coordinates": [
@@ -129,7 +129,7 @@ A MultiPoint geometry is represented by multiple coordinates
 
 ??? Info ":material-code-json: GeoJSON MultiPolygon Schema"
 
-    ```
+    ``` json
     {
       "type": "MultiPolygon",
       "coordinates": [
@@ -150,7 +150,7 @@ A MultiPoint geometry is represented by multiple coordinates
 
 ??? Info ":material-code-json: GeoJSON GeometryCollection"
 
-    ```
+    ``` json
     {
       "type": "GeometryCollection",
       "geometries": [{
@@ -169,7 +169,7 @@ A MultiPoint geometry is represented by multiple coordinates
 
 ??? Info ":material-code-json: GeoJSON Feature"
 
-    ```
+    ``` json
     {
       "type": "Feature",
       "geometry": {
@@ -186,7 +186,7 @@ A MultiPoint geometry is represented by multiple coordinates
 
 ??? Info ":material-code-json: GeoJSON FeatureCollection"
 
-    ```
+    ``` json
     {
       "type": "FeatureCollection",
       "features": [
@@ -237,7 +237,7 @@ TopoJSON use "arcs" as a way of connecting coordinate pairs, reducing the size o
 
 ??? Info "TopoJSON Schema"
   
-    ```
+    ``` json
     {
       "type": "Topology",
       "objects": 
@@ -266,7 +266,7 @@ NLD GeoJSON remove "FeatureCollection"
 
 ??? Info "NLD GeoJSON Schema"
 
-    ```
+    ``` json
     {"type":"Feature","properties":{},"geometry":{"type":"Point","coordinates":[-112.44691371917723,34.551210490715455]}}
     {"type":"Feature","properties":{},"geometry":{"type":"LineString","coordinates":[[-112.4470,34.5510],[-112.4695,34.541]]}}
     {"type":"Feature","properties":{},"geometry":{"type":"Polygon","coordinates":[[[-112.485,34.529],[-112.445,34.529],[-112.445,34.559],[-112.485,34.559],[-112.485,34.529]]]}}
