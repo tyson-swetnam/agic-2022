@@ -21,7 +21,7 @@ nav:
     - Cloud Optimized GeoTiff: cog.md
     - X Array: xarray.md
     - Zarr: zarr.md
-  - Spatio-Temporal Asset Catalogs: stac.md
+  - SpatioTemporal Asset Catalogs: stac.md
   - Jupyter Notebook Examples:
     - GeoJSON: notebooks/geojson.ipynb
     - COPC: notebooks/copc.ipynb
