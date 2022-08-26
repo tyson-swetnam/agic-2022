@@ -13,37 +13,62 @@ There are four components to making a given STAC run. They can be used independe
 | `collections` | additional information such as the extents, license, keywords, providers, etc that describe STAC Items | `JSON` |
 | `API` | a RESTful endpoint that enables search of STAC Items, specified in [OpenAPI](https://spec.openapis.org/oas/v3.1.0){target=_blank}, following [OGC Web Feature Service 3.0](https://svn.osgeo.org/gdal/trunk/gdal/ogr/ogrsf_frmts/wfs/drv_wfs3.html){target=_blank} | Web Service |
 
-[Official STAC Tutorial](https://stacspec.org/en/tutorials/intro-to-stac/){target=_blank}
+[:material-code-json: Official STAC Tutorial](https://stacspec.org/en/tutorials/intro-to-stac/){target=_blank}
 
 ``` mermaid
 classDiagram
-  Person <|-- Student
-  Person <|-- Professor
-  Person : +String name
-  Person : +String phoneNumber
-  Person : +String emailAddress
-  Person: +purchaseParkingPass()
-  Address "1" <-- "0..1" Person:lives at
-  class Student{
-    +int studentNumber
-    +int averageMark
-    +isEligibleToEnrol()
-    +getSeminarsTaken()
+  Catalog <|--|> Collection
+  Catalog <|--|> Item
+  Child_Catalog <|--|> Child_Collection
+  Catalog <|--|> Child_Catalog
+  Child_Catalog <|--|> Child_Item
+  Child_Item <|--|> GeoJSON
+  Child_Item <|--|> Info
+  class Catalog{
+    self absolute URL
+    root URL 
+    parent URL
+    child URL
   }
-  class Professor{
-    +int salary
+  class Item{
+    self
+    root
+    parent
+    child
+    item
   }
-  class Address{
-    +String street
-    +String city
-    +String state
-    +int postalCode
-    +String country
-    -validate()
-    +outputAsLabel()  
+  class Child_Item{
+    self
+    root
+    parent
+    child
+    item
+  }
+  class Catalog{
+    self
+    root
+    parent
+    child
+  }
+  class Collection{
+    self
+    root
+    parent
+    child
+  }
+  class GeoJSON{
+    id
+    type
+    bbox
+    properties
+  }
+  class Info{
+    stac version
+    stac extensions
+    links
+    assets
   }
 ```
-
 
 ### `asset`
 
