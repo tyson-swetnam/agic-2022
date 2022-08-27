@@ -2,21 +2,21 @@
 
 # :material-cloud-tags: Cloud Native Data 
 
-:material-cog: :material-layers-triple: :material-vector-polyline: :material-compass-rose: :material-math-compass: :material-map-clock: :material-map-marker: :material-satellite-variant: :material-airplane: :material-drone: :material-quadcopter: :material-database-cog: :material-graph-outline: 
+:material-cog: :material-layers-triple:   :material-vector-polyline:   :material-compass-rose:   :material-math-compass:   :material-map-clock: :material-map-marker:   :material-satellite-variant:   :material-airplane:   :material-drone:   :material-quadcopter:   :material-database-cog:   :material-graph-outline: 
 
 The purpose of this workshop is to introduce "cloud native" data types used for geographic information science. 
 
-<a href="https://geojson.io" target="blank" rel="geojson">![geojson](https://brands.home-assistant.io/_/geo_json_events/logo.png){ width="100" } </a>
-<a href="https://cogeo.org" target="blank" rel="cog">![cog](https://www.cogeo.org/images/logo/Cog-02.png){ width="100" } </a>
-<a href="https://copc.io" target="blank" rel="copc">![copc](https://copc.io/COPC_IO-Logo-2color.png){ width="100" } </a>
-<a href="https://zarr.readthedocs.io" target="blank" rel="zarr">![zarr](https://zarr.readthedocs.io/en/stable/_static/logo1.png){ width="100" } </a>
-<a href="https://docs.xarray.dev" target="blank" rel="xarray">![xarray](https://docs.xarray.dev/en/stable/_static/dataset-diagram-logo.png){ width="100" } </a>
-<a href="https://stacspec.org" target="blank" rel="stac">![stac](https://d33wubrfki0l68.cloudfront.net/22691a3c3002324451ed99f4009de8aab761e1b7/d24da/public/images-original/stac-01.png){ width="100" } </a>
+<a href="https://geojson.io" align="left" target="blank" rel="geojson">![geojson](https://brands.home-assistant.io/_/geo_json_events/logo.png){ width="100" }</a>
+<a href="https://cogeo.org" align="center" target="blank" rel="cog">![cog](https://www.cogeo.org/images/logo/Cog-02.png){ width="100" } </a>
+<a href="https://zarr.readthedocs.io" align="right" target="blank" rel="zarr">![zarr](https://zarr.readthedocs.io/en/stable/_static/logo1.png){ width="100" }</a><a href="https://docs.xarray.dev" align="right target="blank" rel="xarray">![xarray](https://docs.xarray.dev/en/stable/_static/dataset-diagram-logo.png){ width="100" }</a>
+
+<center><a href="https://stacspec.org" target="blank" rel="stac">![stac](https://d33wubrfki0l68.cloudfront.net/22691a3c3002324451ed99f4009de8aab761e1b7/d24da/public/images-original/stac-01.png){ width="200" } </a></center>
+
+ <left><a href="https://copc.io" target="blank" rel="copc">![copc](https://copc.io/COPC_IO-Logo-2color.png){ width="130" } </a> </left>
 
 #### Instructors(s): 
 [Tyson Lee Swetnam](https://tyson-swetnam.github.io/){target=_blank} [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](http://orcid.org/0000-0002-6639-7181){target=_blank},
-[Aaryn Olsson](https://www.linkedin.com/in/aarynolsson/){target=_blank},
-[Kiri Carini](http://kcarini.github.io/){target=_blank} [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](http://orcid.org/0000-0002-9630-0432){target=_blank}
+[Carlos Lizarraga-Celaya](https://github.com/carloslizarragac){target=_blank} [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-0893-4268){target=_blank}
 
 ## About
 

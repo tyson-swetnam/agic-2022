@@ -1,24 +1,27 @@
-Integrated Development Environments (IDE) are graphical interfaces for working with code and data.
+Integrated Development Environments (IDE) are graphic user interfaces (GUI) for working with code and data.
 
-Modern IDEs interact with cloud and cloud native data types. 
+Modern IDEs are designed to interact with cloud and cloud native data types with few additional extensions.
 
-:material-microsoft-visual-studio-code: The most popular software development IDE for working with code is Microsoft's Visual Studio Code (VS Code). VS Code has extensions for many geospatial applications and can be used to run large compute clusters on cloud.
+The most popular software development IDE for working with code is Microsoft's Visual Studio Code (:material-microsoft-visual-studio-code: VS Code). VS Code has extensions for many geospatial applications and can be used to run large compute clusters on cloud.
 
-:fontawesome-solid-q: QGIS is the most popular IDE for open source GIS applications and has native features which allow users to load cloud optimized and analysis ready data.
+<a href="https://code.visualstudio.com/" align="left" target="blank" rel="vscode">![vscode](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/240px-Visual_Studio_Code_1.35_icon.svg.png){ width="100" }</a>
 
-:material-language-r: RStudio and :material-language-python: Project Jupyter are two other widely used IDE for working with code and data for research. RStudio focuses mostly on the R programming language, but has backward compatibility with Python. Project Jupyter was originally focused on Python but has broad compatibility across almost every programming language.
+[RStudio](https://rstudio.com){target=_blank} and [Project Jupyter](https://jupyter.org/){target=_blank} are two other widely used IDE for working with code and data for research. RStudio focuses mostly on the [:material-language-r: R programming language](https://www.r-project.org/){target=_blank}, but has backward compatibility with Python. 
 
-Free services running virtual machines on the cloud allow you to start and work in your browser. These include Google's Collaboratory (CoLab), the MyBinder Project, GitHub's CodeSpaces, and GitPod. 
+<a href="https://rstudio.com/" align="left" target="blank" rel="rstudio">![rstudio](https://www.rstudio.com/wp-content/uploads/2018/10/RStudio-Logo.png){ width="200" }</a>
 
-## Popular IDE
+Project Jupyter is focused on [:material-language-python: Python](https://www.python.org/){target=_blank} but has broad compatibility (kernels) across [almost every programming language](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels){target=_blank}. Project Jupyter was adopted as the default IDE by several cloud platforms for [on-demand virtual machines](#on-demand-cloud-based-ide).
 
-[:material-language-python: Project Jupyter](https://jupyter.org/){target=_blank}
+<a href="https://jupyter.org/" align="left" target="blank" rel="jupyter">![jupyter](https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/207px-Jupyter_logo.svg.png){ width="100" }</a>
 
-[:fontawesome-solid-q: QGIS](https://qgis.org/en/site/){target=_blank}
+[:fontawesome-solid-q: QGIS](https://qgis.org){target=_blank} is the most popular IDE for open source GIS applications and has native features which allow users to load cloud optimized and analysis ready data.
 
-[:material-language-r: RStudio](https://www.rstudio.com/){target=_blank}
+<a href="https://qgis.org" align="left" target="blank" rel="qgis">![qgis](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/QGIS_logo%2C_2017.svg/640px-QGIS_logo%2C_2017.svg.png){ width="200" }</a>
 
-[:material-microsoft-visual-studio-code: VS Code](https://code.visualstudio.com/){target=_blank}
+ESRI has moved into cloud with its [ArcGIS Online](https://www.arcgis.com/index.html){target=_blank}. Proprietary licenses are required to use ArcGIS Online, but many university and government agencies provide these to their GIS employees.
+
+<a href="https://www.arcgis.com/index.html" align="left" target="blank" rel="arcgis">![arcgis](https://www.esri.com/content/dam/esrisites/en-us/common/icons/product-logos/ArcGISOnline.png){ width="100" }</a> <a href="https://www.arcgis.com/index.html" align="left" target="blank" rel="arcgis">![arcgis](https://upload.wikimedia.org/wikipedia/commons/d/df/ArcGIS_logo.png){ width="100" }</a>
+
 
 ## Cloud Workbenches
 
@@ -39,6 +42,8 @@ Free services running virtual machines on the cloud allow you to start and work 
 [RStudio Workbench](https://www.rstudio.com/products/workbench/){target=_blank} -  is an integrated development environment for R, a programming language for statistical computing and graphics. It is available in two formats: RStudio Desktop is a regular desktop application while RStudio Server runs on a remote server and allows accessing RStudio using a web browser.
 
 ## On-Demand Cloud-based IDE
+
+Free services running virtual machines on the cloud allow you to start and work in your browser. These include Google's Collaboratory (CoLab), the MyBinder Project, GitHub's CodeSpaces, and GitPod. 
 
 [CoLab](https://colab.research.google.com/){target=_blank} - Google's CoLaboratory starts a Jupyter Notebook, limited in size but can be increased with subscription.                
 

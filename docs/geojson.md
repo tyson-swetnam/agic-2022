@@ -1,4 +1,7 @@
-# :material-code-json: GeoJSON (Geo+JSON)
+
+[Jump to :material-hand-clap: hands-on lesson :material-school: ](#hands-on)
+
+## :material-code-json: GeoJSON (Geo+JSON)
 
 [JavaScript Object Notation (JSON)](https://www.json.org/json-en.html){target=_blank} is a lightweight, text-based, language-independent data interchange format. 
 
@@ -226,7 +229,6 @@ A MultiPoint geometry is represented by multiple coordinates
     }
     ```
 
-
 ## Related JSON types
 
 ### TopoJSON
@@ -272,7 +274,7 @@ NLD GeoJSON remove "FeatureCollection"
     {"type":"Feature","properties":{},"geometry":{"type":"Polygon","coordinates":[[[-112.485,34.529],[-112.445,34.529],[-112.445,34.559],[-112.485,34.559],[-112.485,34.529]]]}}
     ```
 
-# GeoJSON Webpages
+## GeoJSON Webpages
 
 [geojson.io](https://geojson.io/){target=_blank} - create, view, edit GeoJSON in your browser
 
@@ -293,6 +295,47 @@ NLD GeoJSON remove "FeatureCollection"
     But the ubiquitous of JSON and its recommended use in cloud requires this fundamental primer.
 
     [Chris Holmes recent Blog Post on 'Cloud Native Vectors'](https://cholmes.medium.com/an-overview-of-cloud-native-vector-c223845638e0){target=_blank}
+
+# Hands-On
+
+## Create a GeoJSON using GeoJSON.io
+
+### **Step 1**: Go to [GeoJSON.io](https://geojson.io/#)
+
+* Zoom into an area of interest (suggest selecting the geographic area around Prescott, AZ)
+
+<figure markdown>
+  ![](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/geojsonio_1.png){ width="500" }
+    <figcaption>GeoJSON.io features a map with either OpenStreetMap or Satellite Base Layer (left), and an example GeoJSON (right) that can be edited & copy/pasted. </figcaption>
+</figure>
+
+* Practice creating points, lines, polygon, and a multi-poligons.
+
+![](../assets/images/geojsonio_3.png)
+
+* Add additional metadata to the "properties"
+
+In the "properties field, add additional metadata:
+
+```
+"type": "Feature",
+      "properties": {
+        "city name" : "Prescott",
+        "state" : "Arizona"
+      },
+```
+
+When you add more than one line, you must use a comma at the end. Note how "properties:" is contained within two curly braces `{}`. Spaces between the colon `:` are optional but may help improve readability.
+
+## Step 2: Export the GeoJSON and open it in a GIS
+
+### Open the GeoJSON in QGIS or ArcGIS Online
+
+### Open the GeoJSON in an IDE (like VS Code or Jupyter)
+
+## Step 3 (Optional): Upload the GeoJSON to a GitHub Repository
+
+## Step 4 (Optional): Convert a SHP file to GeoJSON
 
 ??? Tip "Troubleshooting import HTTPS GeoJSON layers in QGIS"
 
