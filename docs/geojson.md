@@ -187,7 +187,30 @@ A MultiPoint geometry is represented by multiple coordinates
 
 ### :material-layers-triple-outline: FeatureCollection
 
-??? Info ":material-code-json: GeoJSON FeatureCollection"
+??? Info ":material-code-json: GeoJSON FeatureCollection Point"
+
+    ``` json
+    {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {
+            "Location Name" : "Prescott Resort and Conference Center"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -112.44677424430846,
+              34.55109119815299
+            ]
+          }
+        }
+      ]
+    }
+    ```
+
+??? Info ":material-code-json: GeoJSON FeatureCollection with multiple attributes"
 
     ``` json
     {
@@ -300,24 +323,32 @@ NLD GeoJSON remove "FeatureCollection"
 
 ## Create a GeoJSON using GeoJSON.io
 
-### **Step 1**: Go to [GeoJSON.io](https://geojson.io/#)
+### **Step 1** Go to [GeoJSON.io](https://geojson.io/#)
 
 * Zoom into an area of interest (suggest selecting the geographic area around Prescott, AZ)
 
 <figure markdown>
-  ![](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/geojsonio_1.png){ width="500" }
+  <a href="https://geojson.io" target="blank" rel="geojson.io">![geojson.io](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/geojsonio_1.png){ width="700" } </a>
     <figcaption>GeoJSON.io features a map with either OpenStreetMap or Satellite Base Layer (left), and an example GeoJSON (right) that can be edited & copy/pasted. </figcaption>
 </figure>
 
-* Practice creating points, lines, polygon, and a multi-poligons.
+* Practice creating points, lines, polygon, and a multi-polygons.
 
-![](../assets/images/geojsonio_3.png)
+<figure markdown>
+  <a href="https://geojson.io" target="blank" rel="geojson.io">![geojson.io](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/geojsonio_2.png){ width="700" } </a>
+    <figcaption>GeoJSON.io features a map with either OpenStreetMap or Satellite Base Layer (left), and an example GeoJSON (right) that can be edited & copy/pasted. </figcaption>
+</figure>
 
 * Add additional metadata to the "properties"
 
+<figure markdown>
+  <a href="https://geojson.io" target="blank" rel="geojson.io">![geojson.io](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/geojsonio_3.png){ width="700" } </a>
+    <figcaption> Create new metadata </figcaption>
+</figure>
+
 In the "properties field, add additional metadata:
 
-```
+``` json
 "type": "Feature",
       "properties": {
         "city name" : "Prescott",
@@ -325,9 +356,27 @@ In the "properties field, add additional metadata:
       },
 ```
 
-When you add more than one line, you must use a comma at the end. Note how "properties:" is contained within two curly braces `{}`. Spaces between the colon `:` are optional but may help improve readability.
+Note how `"properties:"` is contains the curly braces `{}`. 
 
-## Step 2: Export the GeoJSON and open it in a GIS
+Spaces between the colons `:` are optional but may help improve readability.
+
+When you add more than one new line, you must use a comma at the end. 
+
+## **Step 2** Export a GeoJSON and open it in a GIS
+
+* Click on "Save" on the GeoJSON.io website
+
+* Select teh `GeoJSON` Format
+
+<figure markdown>
+  <a href="https://geojson.io" target="blank" rel="geojson.io">![geojson.io](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/geojsonio_4.png){ width="700" } </a>
+    <figcaption> Create new metadata </figcaption>
+</figure>
+
+<figure markdown>
+  <a href="https://geojson.io" target="blank" rel="geojson.io">![geojson.io](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/geojsonio_3.png){ width="700" } </a>
+    <figcaption> Create new metadata </figcaption>
+</figure>
 
 ### Open the GeoJSON in QGIS or ArcGIS Online
 

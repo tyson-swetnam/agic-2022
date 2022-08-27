@@ -1,3 +1,6 @@
+[Jump to :material-hand-clap: hands-on lesson :material-school: ](#hands-on)
+
+## :material-file-cloud: Cloud Optimized Point Cloud (COPC)
 
  <a href="https://hobu.co" target="blank" rel="hobu">![hobu](https://hobu.co/theme/images/hobulogo.png){ width="100" } </a>
 

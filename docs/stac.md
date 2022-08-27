@@ -1,3 +1,5 @@
+[Jump to :material-hand-clap: hands-on lesson :material-school: ](#hands-on)
+
 ## What is a STAC
 
 The [SpatioTemporal Asset Catalog (STAC)](https://stacspec.org/en){target=_blank} specification provides a common structure for describing and cataloging spatiotemporal assets on the internet. 
@@ -495,6 +497,13 @@ The STAC API
 Generating your own STACs can be done manually, programmatically, or using a templated editor. 
 
 [Create a Catalog with PyStac](https://developers.planet.com/docs/planetschool/introduction-to-stac-part-2-creating-an-example-stac-catalog-of-planet-imagery-with-pystac/){target=_blank}
+
+# Hands On
+
+## Step 1: Go to [https://radiantearth.github.io/stac-browser/#](https://radiantearth.github.io/stac-browser/#){target=_blank}
+
+Explore the different STAC Catalogs that have been added to this Browser.
+
 
 
 ## Examples of STAC Browser
