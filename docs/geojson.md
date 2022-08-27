@@ -380,16 +380,28 @@ GeoJSON can be opened in QGIS without downloading them.
 https://github.com/hobuinc/usgs-lidar/raw/master/boundaries/resources.geojson 
 
 <figure markdown>
-  <a href="https://github.com/hobuinc/usgs-lidar/raw/master/boundaries/resources.geojson" target="blank" rel="qgis_3dep_1">![qgis_3dep_1](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_3dep1_1.png){ width="700" } </a>
+  <a href="https://github.com/hobuinc/usgs-lidar/raw/master/boundaries/resources.geojson" target="blank" rel="qgis_3dep_1">![qgis_3dep_1](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_3dep_1.png){ width="700" } </a>
     <figcaption> Loading a Layer Vector from an HTTP(s) in QGIS Layers</figcaption>
 </figure>
 
 <figure markdown>
-  <a href="https://github.com/hobuinc/usgs-lidar/raw/master/boundaries/resources.geojson" target="blank" rel="qgis_3dep_1">![qgis_3dep_1](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_3dep1_2.png){ width="700" } </a>
-    <figcaption> USGS 3DEP GeoJSON hosted on GitHub </figcaption>
+  <a href="https://github.com/hobuinc/usgs-lidar/raw/master/boundaries/resources.geojson" target="blank" rel="qgis_3dep_2">![qgis_3dep_2](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_3dep_2.png){ width="700" } </a>
+    <figcaption> QGIS can open the GeoJSON without downloading first. </figcaption>
 </figure>
 
 ### Open the GeoJSON in QGIS or ArcGIS Online
+
+https://ua-gisug.maps.arcgis.com/apps/mapviewer/index.html
+
+<figure markdown>
+  <a href="https://ua-gisug.maps.arcgis.com/apps/mapviewer/index.html" target="blank" rel="qgis_3dep_2">![qgis_3dep_2](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/arcgis_3dep_1.png){ width="700" } </a>
+    <figcaption> ArcGIS Online can load GeoJSONs from an HTTP(s) </figcaption>
+</figure>
+
+<figure markdown>
+  <a href="https://ua-gisug.maps.arcgis.com/apps/mapviewer/index.html" target="blank" rel="qgis_3dep_2">![qgis_3dep_2](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/arcgis_3dep_2.png){ width="700" } </a>
+    <figcaption> The same USGS 3DEP Boundaries in ArcGIS Online Map Viewer</figcaption>
+</figure>
 
 ### Open the GeoJSON in an IDE (like VS Code or Jupyter)
 
