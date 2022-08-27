@@ -373,32 +373,33 @@ When you add more than one new line, you must use a comma at the end.
     <figcaption> Create new metadata </figcaption>
 </figure>
 
-## **Step 3** Open the GeoJSON in QGIS
+## **Step 3** Option 1: Open the GeoJSON in QGIS
 
 GeoJSON can be opened in QGIS without downloading them.
 
-In QGIS Open the "Layers" and "Add Vector Layer"
+In QGIS Open the "Layers" then "Add Layer" and then "Add Vector Layer"
 
 <figure markdown>
-  <a href="https://qgis.org" target="blank" rel="qgis_geojson_1">![qgis_geojson_1](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_geojson_1.png){ width="700" } </a>
+  <a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_geojson_1.png" target="blank" rel="qgis_geojson_1">![qgis_geojson_1](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_geojson_1.png){ width="700" } </a>
     <figcaption> Loading a Layer Vector from the localhost in QGIS Layers</figcaption>
 </figure>
 
-You can select which feature collection you want to load
-
 <figure markdown>
-  <a href="https://qgis.org" target="blank" rel="qgis_geojson_2">![qgis_geojson_2](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_geojson_1.png){ width="700" } </a>
-    <figcaption> Loading a Layer Vector from the localhost in QGIS Layers</figcaption>
+  <a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_geojson_2.png" target="blank" rel="qgis_geojson_2">![qgis_geojson_2](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_geojson_2.png){ width="700" } </a>
+    <figcaption> You can select which feature collection you want to load
+</figcaption>
 </figure>
 
-After the layer is loaded you can view it in the display
-
 <figure markdown>
-  <a href="https://qgis.org" target="blank" rel="qgis_geojson_3">![qgis_geojson_3](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_geojson_3.png){ width="700" } </a>
-    <figcaption> Loading a Layer Vector from the localhost in QGIS Layers</figcaption>
+  <a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_geojson_3.png" target="blank" rel="qgis_geojson_3">![qgis_geojson_3](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_geojson_3.png){ width="700" } </a>
+    <figcaption> After the GeoJSON is loaded you can view it in the display</figcaption>
 </figure>
 
-[USGS 3DEP Boundaries file](https://github.com/hobuinc/usgs-lidar/blob/master/boundaries/resources.geojson){target=_blank}
+### Loading GeoJSON from HTTP(S)
+
+GeoJSON can be read directly from the web, without downloading them.
+
+Here we're going to use the [USGS 3DEP lidar boundaries](https://github.com/hobuinc/usgs-lidar/blob/master/boundaries/resources.geojson){target=_blank} layer which is hosted on GitHub:
 
 https://github.com/hobuinc/usgs-lidar/raw/master/boundaries/resources.geojson 
 
@@ -412,23 +413,40 @@ https://github.com/hobuinc/usgs-lidar/raw/master/boundaries/resources.geojson
     <figcaption> QGIS can open the GeoJSON without downloading first. </figcaption>
 </figure>
 
-### Open the GeoJSON in ArcGIS Online
+## **Step 3** Option 2: Open the GeoJSON in ArcGIS Online
 
 Log into ArcGIS Online and select the MapViewer
 
 https://ua-gisug.maps.arcgis.com/apps/mapviewer/index.html
 
 <figure markdown>
-  <a href="https://ua-gisug.maps.arcgis.com/apps/mapviewer/index.html" target="blank" rel="arcgis_3dep_2">![arcgis_3dep_2](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/arcgis_3dep_1.png){ width="700" } </a>
+  <a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/arcgis_3dep_1.png" target="blank" rel="arcgis_3dep_2">![arcgis_3dep_2](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/arcgis_3dep_1.png){ width="700" } </a>
     <figcaption> ArcGIS Online can load GeoJSONs from an HTTP(s) </figcaption>
 </figure>
 
 <figure markdown>
-  <a href="https://ua-gisug.maps.arcgis.com/apps/mapviewer/index.html" target="blank" rel="arcgis_3dep_2">![arcgis_3dep_2](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/arcgis_3dep_2.png){ width="700" } </a>
+  <a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/arcgis_3dep_2.png" target="blank" rel="arcgis_3dep_2">![arcgis_3dep_2](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/arcgis_3dep_2.png){ width="700" } </a>
     <figcaption> The same USGS 3DEP Boundaries in ArcGIS Online Map Viewer</figcaption>
 </figure>
 
 ### Open the GeoJSON in an IDE (like VS Code or Jupyter)
+
+VS Code can be used to view and edit JSON and GeoJSON
+
+<figure markdown>
+  <a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/vscode_geojson_1.png" target="blank" rel="vscode_geojson_1">![vscode_geojson_1](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/vscode_geojson_1){ width="700" } </a>
+    <figcaption> VS Code can be used to view and edit JSON and GeoJSON</figcaption>
+</figure>
+
+<figure markdown>
+  <a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/vscode_geojson_2.png" target="blank" rel="vscode_geojson_2">![vscode_geojson_2](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/vscode_geojson_2.png){ width="700" } </a>
+    <figcaption> VS Code Extensions can be used to render the GeoJSON</figcaption>
+</figure>
+
+<figure markdown>
+  <a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/vscode_geojson_3.png" target="blank" rel="vscode_geojson_3">![vscode_geojson_3](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/vscode_geojson_3.png){ width="700" } </a>
+    <figcaption> There are a variety of extensions for both GeoJSON and Leaflet</figcaption>
+</figure>
 
 ## Step 3 (Optional): Upload the GeoJSON to a GitHub Repository
 
