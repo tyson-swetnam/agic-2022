@@ -373,9 +373,20 @@ When you add more than one new line, you must use a comma at the end.
     <figcaption> Create new metadata </figcaption>
 </figure>
 
+GeoJSON can be opened in QGIS without downloading them.
+
+[USGS 3DEP Boundaries file](https://github.com/hobuinc/usgs-lidar/blob/master/boundaries/resources.geojson){target=_blank}
+
+https://github.com/hobuinc/usgs-lidar/raw/master/boundaries/resources.geojson 
+
 <figure markdown>
-  <a href="https://geojson.io" target="blank" rel="geojson.io">![geojson.io](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/geojsonio_3.png){ width="700" } </a>
-    <figcaption> Create new metadata </figcaption>
+  <a href="https://github.com/hobuinc/usgs-lidar/raw/master/boundaries/resources.geojson" target="blank" rel="qgis_3dep_1">![qgis_3dep_1](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_3dep1_1.png){ width="700" } </a>
+    <figcaption> Loading a Layer Vector from an HTTP(s) in QGIS Layers</figcaption>
+</figure>
+
+<figure markdown>
+  <a href="https://github.com/hobuinc/usgs-lidar/raw/master/boundaries/resources.geojson" target="blank" rel="qgis_3dep_1">![qgis_3dep_1](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_3dep1_2.png){ width="700" } </a>
+    <figcaption> USGS 3DEP GeoJSON hosted on GitHub </figcaption>
 </figure>
 
 ### Open the GeoJSON in QGIS or ArcGIS Online
