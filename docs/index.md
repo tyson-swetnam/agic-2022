@@ -4,7 +4,15 @@
 
 :material-cog: :material-layers-triple:   :material-vector-polyline:   :material-compass-rose:   :material-math-compass:   :material-map-clock: :material-map-marker:   :material-satellite-variant:   :material-airplane:   :material-drone:   :material-quadcopter:   :material-database-cog:   :material-graph-outline: 
 
-The purpose of this workshop is to introduce "cloud native" data types used for geographic information science. 
+## Why "cloud native"?
+
+Many of us have been participants in "sneaker net" and "mail order" data delivery ordering and managing data transfers over physical media. These data are then processed on our workstations and laptop computers and ultimately put on external hard drives or uploaded back to national data services. Most of these data are forgotten and left in dusty desk drawers, where they become "Dark Data" without any use to future generations of GIS specialists.
+
+<figure markdown>
+  <a href="https://github.com/hobuinc/usgs-lidar/raw/master/boundaries/resources.geojson" target="blank" rel="qgis_3dep_2">![qgis_3dep_2](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_3dep_2.png){ width="700" } </a>
+    <figcaption> QGIS can open the GeoJSON without downloading first. </figcaption>
+</figure>
+
 
 <center>
 <a href="https://geojson.io" style="float:left" target="blank" rel="geojson">![geojson](https://brands.home-assistant.io/_/geo_json_events/logo.png){ width="200" height="25" } </a>

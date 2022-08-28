@@ -500,15 +500,15 @@ Generating your own STACs can be done manually, programmatically, or using a tem
 
 # Hands On
 
-## Step 1: Go to [https://radiantearth.github.io/stac-browser/#](https://radiantearth.github.io/stac-browser/#){target=_blank}
+## **Step 1** Go to [https://radiantearth.github.io/stac-browser/#](https://radiantearth.github.io/stac-browser/#){target=_blank}
+
+Radiant Earth maintains the [STAC Browser](https://radiantearth.github.io/stac-browser/#/){target=_blank}
 
 Explore the different STAC Catalogs that have been added to this Browser.
 
-
+## Step 2 Viewing  
 
 ## Examples of STAC Browser
-
-Radiant Earth maintains the [STAC Browser](https://radiantearth.github.io/stac-browser/#/){target=_blank}
 
 [QGIS STAC Browser Plugin](https://github.com/stac-utils/qgis-stac-plugin){target=_blank}
 

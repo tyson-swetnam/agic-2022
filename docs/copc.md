@@ -2,6 +2,8 @@
 
 ## :material-file-cloud: Cloud Optimized Point Cloud (COPC)
 
+### Background on COPC
+
  <a href="https://hobu.co" target="blank" rel="hobu">![hobu](https://hobu.co/theme/images/hobulogo.png){ width="100" } </a>
 
 [HoBu Inc.](https://hobu.co/){target=_blank} open source license their software for working with a wide variety of lidar data types. Hobu's portfolio now includes:
@@ -30,11 +32,19 @@ COPC would not be possible without the Open Source compression file format, `*.L
 
 <a href="https://rapidlasso.de/" target="blank" rel="rapidlasso">![rapidlasso](https://rapidlasso.de/wp-content/uploads/rapidlasso_square_256x2561.png){ width="100" } </a>
 
-## The COPC Format
+## Understanding the COPC Format
+
+At the most simple level, a COPC is also a `.laz` format lidar tile with additional structure which make it cloud optimized.
+
+# Hands On
+
+
 
 ## COPC Creation
 
 ## COPC Viewer
+
+[Microsoft Planetary Computer Explorer](https://planetarycomputer.microsoft.com/dataset/3dep-lidar-classification){target=_blank}
 
 [viewer.copc.io](https://viewer.copc.io/){target=_blank} - experimental Viewer for EPT and COPC point clouds hosted over `https://`
 

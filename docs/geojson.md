@@ -321,9 +321,9 @@ NLD GeoJSON remove "FeatureCollection"
 
 # Hands-On
 
-## Create a GeoJSON using GeoJSON.io
+## **Step 1** Go to [GeoJSON.io](https://geojson.io/#)
 
-### **Step 1** Go to [GeoJSON.io](https://geojson.io/#)
+Play around creating different GeoJSON Geometries and Feature Collections
 
 * Zoom into an area of interest (suggest selecting the geographic area around Prescott, AZ)
 
@@ -346,7 +346,7 @@ NLD GeoJSON remove "FeatureCollection"
     <figcaption> Create new metadata </figcaption>
 </figure>
 
-In the "properties field, add additional metadata:
+In the `"properties" : {}` field, add additional metadata:
 
 ``` json
 "type": "Feature",
@@ -356,17 +356,23 @@ In the "properties field, add additional metadata:
       },
 ```
 
-Note how `"properties:"` is contains the curly braces `{}`. 
+!!! Note ":material-code-json: JSON formatting"
 
-Spaces between the colons `:` are optional but may help improve readability.
+    JSON is very specific when it comes to line spacing, braces `{}`, quotations `""` for strings, and commas `,` at the end of a line inside a feature.
 
-When you add more than one new line, you must use a comma at the end. 
+    * Try to use a text editor with JSON formatting turned on, this will help you to debug hand-written or edited JSON and GeoJSON files that have errors.
+
+    * Spaces between the colons `:` are optional but may help improve readability.
+
+    * When you add more than one new line, you must use a comma at the end. 
 
 ## **Step 2** Export a GeoJSON 
 
 * Click on "Save" on the GeoJSON.io website
 
-* Select teh `GeoJSON` Format
+* Select the `GeoJSON` Format option.
+
+* Download to your local computer in an easy to relocate folder
 
 <figure markdown>
   <a href="https://geojson.io" target="blank" rel="geojson.io">![geojson.io](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/geojsonio_4.png){ width="700" } </a>
@@ -375,9 +381,13 @@ When you add more than one new line, you must use a comma at the end.
 
 ## **Step 3** Option 1: Open the GeoJSON in QGIS
 
-GeoJSON can be opened in QGIS without downloading them.
+* Open QGIS
 
-In QGIS Open the "Layers" then "Add Layer" and then "Add Vector Layer"
+* In the "Layers" then "Add Layer" and then "Add Vector Layer" 
+
+* Choose the "**Source Type** and select "File" for a file on your computer
+
+* Navigate to your downloads folder and select a downloaded `.geojson` in the "**Source**" "*Vector Dataset(s)*" field.
 
 <figure markdown>
   <a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_geojson_1.png" target="blank" rel="qgis_geojson_1">![qgis_geojson_1](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_geojson_1.png){ width="700" } </a>
@@ -403,6 +413,12 @@ Here we're going to use the [USGS 3DEP lidar boundaries](https://github.com/hobu
 
 https://github.com/hobuinc/usgs-lidar/raw/master/boundaries/resources.geojson 
 
+??? Tip "Using GitHub to view GeoJSON"
+
+    Note how [`resources.geojson`](https://github.com/hobuinc/usgs-lidar/blob/master/boundaries/resources.geojson){target=_blank} is visible as a leaflet map directly in GitHub.
+
+    GeJSON can also be visualized in [VS Code and Jupyter Lab](#open-the-geojson-in-an-ide-like-vs-code-or-jupyter) the same way using map extensions for Folium and Leaflet.
+
 <figure markdown>
   <a href="https://github.com/hobuinc/usgs-lidar/raw/master/boundaries/resources.geojson" target="blank" rel="qgis_3dep_1">![qgis_3dep_1](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_3dep_1.png){ width="700" } </a>
     <figcaption> Loading a Layer Vector from an HTTP(s) in QGIS Layers</figcaption>
@@ -413,44 +429,6 @@ https://github.com/hobuinc/usgs-lidar/raw/master/boundaries/resources.geojson
     <figcaption> QGIS can open the GeoJSON without downloading first. </figcaption>
 </figure>
 
-## **Step 3** Option 2: Open the GeoJSON in ArcGIS Online
-
-Log into ArcGIS Online and select the MapViewer
-
-https://ua-gisug.maps.arcgis.com/apps/mapviewer/index.html
-
-<figure markdown>
-  <a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/arcgis_3dep_1.png" target="blank" rel="arcgis_3dep_2">![arcgis_3dep_2](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/arcgis_3dep_1.png){ width="700" } </a>
-    <figcaption> ArcGIS Online can load GeoJSONs from an HTTP(s) </figcaption>
-</figure>
-
-<figure markdown>
-  <a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/arcgis_3dep_2.png" target="blank" rel="arcgis_3dep_2">![arcgis_3dep_2](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/arcgis_3dep_2.png){ width="700" } </a>
-    <figcaption> The same USGS 3DEP Boundaries in ArcGIS Online Map Viewer</figcaption>
-</figure>
-
-### Open the GeoJSON in an IDE (like VS Code or Jupyter)
-
-VS Code can be used to view and edit JSON and GeoJSON
-
-<figure markdown>
-  <a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/vscode_geojson_1.png" target="blank" rel="vscode_geojson_1">![vscode_geojson_1](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/vscode_geojson_1){ width="700" } </a>
-    <figcaption> VS Code can be used to view and edit JSON and GeoJSON</figcaption>
-</figure>
-
-<figure markdown>
-  <a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/vscode_geojson_2.png" target="blank" rel="vscode_geojson_2">![vscode_geojson_2](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/vscode_geojson_2.png){ width="700" } </a>
-    <figcaption> VS Code Extensions can be used to render the GeoJSON</figcaption>
-</figure>
-
-<figure markdown>
-  <a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/vscode_geojson_3.png" target="blank" rel="vscode_geojson_3">![vscode_geojson_3](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/vscode_geojson_3.png){ width="700" } </a>
-    <figcaption> There are a variety of extensions for both GeoJSON and Leaflet</figcaption>
-</figure>
-
-## Step 3 (Optional): Upload the GeoJSON to a GitHub Repository
-
-## Step 4 (Optional): Convert a SHP file to GeoJSON
 
 ??? Tip "Troubleshooting import HTTPS GeoJSON layers in QGIS"
 
@@ -477,3 +455,41 @@ VS Code can be used to view and edit JSON and GeoJSON
           variable value 2: `YES`
 
       4. Restart QGIS and them try to add the GeoJSON file link again.
+
+
+## **Step 3** Option 2: Open the GeoJSON in ArcGIS Online
+
+Log into ArcGIS Online and select the MapViewer
+
+https://ua-gisug.maps.arcgis.com/apps/mapviewer/index.html
+
+<figure markdown>
+  <a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/arcgis_3dep_1.png" target="blank" rel="arcgis_3dep_2">![arcgis_3dep_2](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/arcgis_3dep_1.png){ width="700" } </a>
+    <figcaption> ArcGIS Online can load GeoJSONs from an HTTP(s) </figcaption>
+</figure>
+
+<figure markdown>
+  <a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/arcgis_3dep_2.png" target="blank" rel="arcgis_3dep_2">![arcgis_3dep_2](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/arcgis_3dep_2.png){ width="700" } </a>
+    <figcaption> The same USGS 3DEP Boundaries in ArcGIS Online Map Viewer</figcaption>
+</figure>
+
+### Open the GeoJSON in an IDE (like VS Code or Jupyter)
+
+VS Code can be used to view and edit JSON and GeoJSON
+
+<figure markdown>
+  <a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/vscode_geojson_1.png" target="blank" rel="vscode_geojson_1">![vscode_geojson_1](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/vscode_geojson_1.png){ width="700" } </a>
+    <figcaption> VS Code can be used to view and edit JSON and GeoJSON</figcaption>
+</figure>
+
+<figure markdown>
+  <a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/vscode_geojson_2.png" target="blank" rel="vscode_geojson_2">![vscode_geojson_2](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/vscode_geojson_2.png){ width="700" } </a>
+    <figcaption> VS Code Extensions can be used to render the GeoJSON</figcaption>
+</figure>
+
+<figure markdown>
+  <a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/vscode_geojson_3.png" target="blank" rel="vscode_geojson_3">![vscode_geojson_3](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/vscode_geojson_3.png){ width="700" } </a>
+    <figcaption> There are a variety of extensions for both GeoJSON and Leaflet</figcaption>
+</figure>
+
+## Step 4 (Optional): Convert a SHP file to GeoJSON
