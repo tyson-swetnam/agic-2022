@@ -4,13 +4,13 @@
 
 Cloud Optimized GeoTIFFs (COGs) are just like regular [GeoTIFF](https://www.ogc.org/standards/geotiff){target=_blank}
 
-COGs have three major features: internal tiling, internal overview structures, and HTTP:// `GET` range requests
+COGs have three major features: internal tiling, internal overview structures, and HTTP GET Range Requests
 
 [COG Specification](https://github.com/cogeotiff/cog-spec/blob/master/spec.md){target=_blank}
 
 ### Tiling
 
-Internal **Tiling** GeoTIFFs (typically into 128x128, 256x256, or 512x512 pixel tiles).  
+Internal Tiling GeoTIFFs (typically into 128x128, 256x256, or 512x512 pixel tiles).  
 
 #### Virtual Raster Tiles (VRT)
 
@@ -22,7 +22,7 @@ GDAL uses VRTs to create mosaic datasets which improve performance for loading a
 
 ### Overviews 
 
-**Overviews** are downsampled thumbnail images of the tile. A COG will have many overviews matched to each [Zoom Level](https://wiki.openstreetmap.org/wiki/Zoom_levels){target=_blank}.
+Overviews are downsampled thumbnail images of the tile. A COG will have many overviews matched to each [Zoom Level](https://wiki.openstreetmap.org/wiki/Zoom_levels){target=_blank}.
 
 ### HTTP(s) GET Range Request
 
