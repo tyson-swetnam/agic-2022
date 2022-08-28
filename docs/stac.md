@@ -508,7 +508,9 @@ Explore the different STAC Catalogs that have been added to this Browser.
 
 ## Step 2 Viewing  
 
-## Examples of STAC Browser
+## Examples of STAC Browsers
+
+[STAC Index](https://stacindex.org/){target=_blank}
 
 [QGIS STAC Browser Plugin](https://github.com/stac-utils/qgis-stac-plugin){target=_blank}
 

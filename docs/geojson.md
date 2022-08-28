@@ -345,14 +345,14 @@ Play around creating different GeoJSON Geometries and Feature Collections
 
 <figure markdown>
   <a href="https://geojson.io" target="blank" rel="geojson.io">![geojson.io](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/geojsonio_1.png){ width="700" } </a>
-    <figcaption>GeoJSON.io features a map with either OpenStreetMap or Satellite Base Layer (left), and an example GeoJSON (right) that can be edited & copy/pasted. </figcaption>
+    <figcaption>[GeoJSON.io](https://geojson.io){target=_blank} features a map with either OpenStreetMap or Satellite Base Layer (left), and an example GeoJSON (right) that can be edited & copy/pasted.</figcaption>
 </figure>
 
 * Practice creating points, lines, polygon, and a multi-polygons.
 
 <figure markdown>
   <a href="https://geojson.io" target="blank" rel="geojson.io">![geojson.io](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/geojsonio_2.png){ width="700" } </a>
-    <figcaption>GeoJSON.io features a map with either OpenStreetMap or Satellite Base Layer (left), and an example GeoJSON (right) that can be edited & copy/pasted. </figcaption>
+    <figcaption>A Polygon Feature Collection</figcaption>
 </figure>
 
 * Add additional metadata to the "properties"
@@ -519,6 +519,10 @@ QGIS can export `.shp` as `.geojson` directly.
 
 <figure markdown>
   <a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_export_2.png" target="blank" rel="qgis_export_2">![qgis_export_2](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_export_2.png){ width="700" } </a>
-    <figcaption> If you plan to use your `.geojson` in a web map, set the to `EPSG:4326 - WGS84` and the `COORDINATE_PRECISION` down to 4-6 decimals (<1-4 ft GSD).
+    <figcaption> If you plan to use your `.geojson` in a web map, set the CRS to `EPSG:4326 - WGS84` and the `COORDINATE_PRECISION` down to 4-6 decimals (<1-4 ft GSD).
 </figcaption>
 </figure>
+
+# Additional Reading
+
+[Applied Use of JSON, GeoJSON, JSON-LD, SPARQL, and IPython Notebooks for Representing and Interacting with Small Datasets - by Sebastian Heath](http://dlib.nyu.edu/awdl/isaw/isaw-papers/20-13/){target=_blank}
