@@ -56,9 +56,6 @@ gdal_translate example.tif example_webmerc_cog.tif -of COG -co TILING_SCHEME=Goo
 
 [Open Layers COGs](https://openlayers.org/en/latest/examples/cog.html){target=_blank}
 
-[GeoTIFF Compression for Dummies](https://blog.cleverelephant.ca/2015/02/geotiff-compression-for-dummies.html){target=_blank} - suggests the best version is a "GeoTIFF, with JPEG compression, internally tiled, in the YCBCR color space, with internal overviews."
-
-
 # Hands On
 
 ## **Step 1** Finding COGs on the internet
@@ -92,5 +89,7 @@ Try adding the `https://` URL of the COG that you found on the internet into the
 [COGEO.xyz](https://cogeo.xyz/){target=_blank}
 
 # Additional Reading
+
+[GeoTIFF Compression for Dummies](https://blog.cleverelephant.ca/2015/02/geotiff-compression-for-dummies.html){target=_blank} - suggests the best version is "a GeoTIFF, with JPEG compression, internally tiled, in the YCBCR color space, with internal overviews."
 
 [COGS in Production blog post by Sean Rennie](https://sean-rennie.medium.com/cogs-in-production-e9a42c7f54e4){target=_blank}
