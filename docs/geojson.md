@@ -8,7 +8,7 @@
 * [JSON syntax](https://www.w3schools.com/js/js_json_syntax.asp){target=_blank}
 * [rfc7159](https://datatracker.ietf.org/doc/html/rfc7159){target=_blank}
 
-??? Info "an example JSON Schema for a geospatial object"
+??? Info "an old style example the JSON Schema for a geospatial object"
   
     ``` json
     {
@@ -32,8 +32,7 @@
       }
     }
     ```
-    
-    **data**
+    The location **data** section of the JSON later describes a point:
     
     ``` json
     {
@@ -42,7 +41,7 @@
     }
     ```
 
-[GeoJSON](https://geojson.org/){target=_blank} is a format for encoding a variety of geographic data structures.
+[:material-code-json: GeoJSON](https://geojson.org/){target=_blank} is a format for encoding a variety of geographic data structures.
 
 * [geojson.org](https://geojson.org){target=_blank}
 * [rfc7946](https://datatracker.ietf.org/doc/html/rfc7946){target=_blank}
@@ -54,13 +53,12 @@ A GeoJSON Object may represent a region of space: a **Geometry**, a **Feature**,
 There are seven types of geometric shapes which can be defined in GeoJSON.
 
 * Point, LineString and Polygon are *single type geometry objects* 
+
 * MultiPoint, MultiLineString, and MultiPolygon are *multipart geometry objects*
 
 Each of the examples below represents a valid and complete GeoJSON object:
 
 #### :material-map-marker: Point
-
-A Point geometry is represented by a single set of latitude and a longitude coordinates, and optionally an elevation value (above mean sea level).  
 
 ??? Info ":material-code-json: GeoJSON Point Schema"
 
@@ -70,6 +68,9 @@ A Point geometry is represented by a single set of latitude and a longitude coor
       "coordinates": [-112.4471, 34.5510]
     }
     ```
+
+    A `Point` geometry is represented by a single set of longitude then latitude coordinates, optionally elevation (above mean sea level) can also be included for a third axis.  
+
 
 #### :material-vector-polyline: LineString 
 
@@ -84,6 +85,8 @@ A Point geometry is represented by a single set of latitude and a longitude coor
     }
     ```
 
+    A `Line` geometry uses two or more sets of coordinate pairs to create a line or multi-line.
+
 #### :material-vector-polygon: Polygon
 
 ??? Info ":material-code-json: GeoJSON Polygon Schema"
@@ -97,10 +100,9 @@ A Point geometry is represented by a single set of latitude and a longitude coor
     }
     ```
 
+    A `Polygon` has at least three sets of coordinate pairs which close the shape.
 
 #### :material-map-marker-multiple: MultiPoint
-
-A MultiPoint geometry is represented by multiple coordinates
 
 ??? Info ":material-code-json: GeoJSON MultiPoint Schema"
 
@@ -113,6 +115,8 @@ A MultiPoint geometry is represented by multiple coordinates
         ]
     }
     ```
+
+    A `MultiPoint` geometry is represented by multiple coordinate point pairs
 
 #### :material-vector-polyline::material-vector-line: MultiLineString
 
@@ -127,6 +131,8 @@ A MultiPoint geometry is represented by multiple coordinates
         ]    
     }
     ```
+
+    A `MultiLineString` uses multiple lines which are not connected.
 
 #### :material-vector-combine: MultiPolygon
 
@@ -149,6 +155,8 @@ A MultiPoint geometry is represented by multiple coordinates
     }
     ```
 
+    A `MultiPolygon` uses multiple lines to provide more than one set of polygons.
+
 #### :material-layers-triple-outline: GeometryCollection
 
 ??? Info ":material-code-json: GeoJSON GeometryCollection"
@@ -168,6 +176,8 @@ A MultiPoint geometry is represented by multiple coordinates
     }
     ```
 
+    The `GeometryCollection` introduces a new set of braces `{}` which separate different geometries.
+
 ### :material-layers-outline: Feature
 
 ??? Info ":material-code-json: GeoJSON Feature"
@@ -184,6 +194,8 @@ A MultiPoint geometry is represented by multiple coordinates
       }
     }
     ```
+
+    A `Feature` provides a new set of `properties:` which allow metadata and annotation of the geometry.
 
 ### :material-layers-triple-outline: FeatureCollection
 
@@ -209,6 +221,8 @@ A MultiPoint geometry is represented by multiple coordinates
       ]
     }
     ```
+
+    A full `FeatureCollection` provides us with the ability to create multiple `Features`
 
 ??? Info ":material-code-json: GeoJSON FeatureCollection with multiple attributes"
 
@@ -303,21 +317,23 @@ NLD GeoJSON remove "FeatureCollection"
 
 [python-geojson](https://python-geojson.readthedocs.io/en/latest/){target=_blank}
 
-[GeoJSON in ArcGIS Online](https://doc.arcgis.com/en/arcgis-online/reference/geojson.htm)
+[GeoJSON in ArcGIS Online](https://doc.arcgis.com/en/arcgis-online/reference/geojson.htm){target=_blank}
 
 [GeoJSON in BigQuery](https://cloud.google.com/blog/topics/developers-practitioners/using-geojson-bigquery-geospatial-analytics){target=_blank}
 
 [JSON Formatter Chrome Plugin](https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa?hl=en){target=_blank}
 
-[shp2json](https://github.com/mbostock/shapefile) cross-platform streaming parser for the ESRI Shapefile spatial data format.
+[shp2json](https://github.com/mbostock/shapefile){target=_blank} cross-platform streaming parser for the ESRI Shapefile spatial data format.
 
 ??? Question "Is GeoJSON really 'cloud native'?"
 
-    Not really. 
+    Not really. NLD GeoJSON is closer to being cloud-native format than GeoJSON, but both have their short-comings.
     
-    But the ubiquitous of JSON and its recommended use in cloud requires this fundamental primer.
+    The ubiquity of JSON on web and its recommended use in cloud-native formats is why we're teaching it. You'll learn in the later sections GeoJSON is the most common vector for querying cloud optimized data formats. 
 
     [Chris Holmes recent Blog Post on 'Cloud Native Vectors'](https://cholmes.medium.com/an-overview-of-cloud-native-vector-c223845638e0){target=_blank}
+
+    [Chris Holmes older blog post on 'Towards a Cloud-Native Geospatial standards baseline'](https://www.ogc.org/blog/4609){target=_blank}
 
 # Hands-On
 
@@ -493,3 +509,16 @@ VS Code can be used to view and edit JSON and GeoJSON
 </figure>
 
 ## Step 4 (Optional): Convert a SHP file to GeoJSON
+
+QGIS can export `.shp` as `.geojson` directly.
+
+<figure markdown>
+  <a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_export_1.png" target="blank" rel="qgis_export_1">![qgis_export_1](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_export_1.png){ width="700" } </a>
+    <figcaption> "Export" and "Save Feature As"</figcaption>
+</figure>
+
+<figure markdown>
+  <a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_export_2.png" target="blank" rel="qgis_export_2">![qgis_export_2](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_export_2.png){ width="700" } </a>
+    <figcaption> If you plan to use your `.geojson` in a web map, set the to `EPSG:4326 - WGS84` and the `COORDINATE_PRECISION` down to 4-6 decimals (<1-4 ft GSD).
+</figcaption>
+</figure>

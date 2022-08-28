@@ -6,13 +6,21 @@
 
 ## Why "cloud native"?
 
-Many of us have been participants in "sneaker net" and "mail order" data delivery ordering and managing data transfers over physical media. These data are then processed on our workstations and laptop computers and ultimately put on external hard drives or uploaded back to national data services. Most of these data are forgotten and left in dusty desk drawers, where they become "Dark Data" without any use to future generations of GIS specialists.
-
 <figure markdown>
-  <a href="https://github.com/hobuinc/usgs-lidar/raw/master/boundaries/resources.geojson" target="blank" rel="qgis_3dep_2">![qgis_3dep_2](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_3dep_2.png){ width="700" } </a>
-    <figcaption> QGIS can open the GeoJSON without downloading first. </figcaption>
+  <a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/conventional.png" target="blank" rel="conventional">![conventional](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/conventional.png){ width="700" } </a>
+    <figcaption> The old ways of receiving and working with GIS data. </figcaption>
 </figure>
 
+Many of us have been participants in "sneaker net" and "mail order" data delivery ordering and managing data transfers over physical media. These data are then processed on our workstations and laptop computers and ultimately put on external hard drives or uploaded back to national data services. GIS data have changed hands for years over conventional internet protocols (`https://`, `ftp://`, and newer `s3://`), where datasets are preferentially DOWNLOADED to our local compute resources and worked on.
+
+"Cloud Native" means you are no longer looking to download all of your GIS data. Instead, we send our "code" and our execution tasks to the "Cloud" where the data are processed, and serviced over a variety of commercial cloud providers who are already hosting these large geospatial datasets (often free of cost to us).  Results can be viewed in the browser, or streamed in reduced formats back to our local computers.
+
+<figure markdown>
+  <a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/cloud.png" target="blank" rel="cloud">![cloud](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/cloud.png){ width="700" } </a>
+    <figcaption> The Cloudy way </figcaption>
+</figure>
+
+Cloud-native and "Analysis Ready Data" formats allow us to work with large datasets on the cloud easily and rather painlessly.
 
 <center>
 <a href="https://geojson.io" style="float:left" target="blank" rel="geojson">![geojson](https://brands.home-assistant.io/_/geo_json_events/logo.png){ width="200" height="25" } </a>
