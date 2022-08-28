@@ -11,8 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
-        with:
-            python-version: 3.9
+              with:
+                  python-version: 3.9
       - name: run requirements file
         run:  pip install -r requirements_mkdocs.txt 
       - name: Deploy docs
