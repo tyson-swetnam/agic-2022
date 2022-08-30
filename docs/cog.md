@@ -12,11 +12,6 @@ COGs have three major features: internal tiling, internal overview structures, a
 
 Internal Tiling GeoTIFFs (typically into 128x128, 256x256, or 512x512 pixel tiles).  
 
-<figure markdown>
-  <a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/geotiff_pyramid.png" target="blank" rel="geotiff_pyramid">![geotiff_pyramid](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/geotiff_pyramid.png){ width="700" } </a>
-    <figcaption>GeoTIFF pyramid by Zoom Level</figcaption>
-</figure>
-
 #### Virtual Raster Tiles (VRT)
 
 Virtual Raster Tiles (VRT) are virtual datasets using XML format. 
@@ -28,6 +23,11 @@ GDAL uses VRTs to create mosaic datasets which improve performance for loading a
 ### Overviews 
 
 Overviews are downsampled thumbnail images of the tile. A COG will have many overviews matched to each [Zoom Level](https://wiki.openstreetmap.org/wiki/Zoom_levels){target=_blank}.
+
+<figure markdown>
+  <a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/geotiff_pyramid.png" target="blank" rel="geotiff_pyramid">![geotiff_pyramid](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/geotiff_pyramid.png){ width="700" } </a>
+    <figcaption>GeoTIFF pyramid by Zoom Level</figcaption>
+</figure>
 
 ### HTTP(s) GET Range Request
 
@@ -87,13 +87,25 @@ There are numerous cloud based data stores hosting COGs, take a look through a f
 
 Open in your browser the [COG Viewer](https://www.cogeo.org/map/)
 
-Try adding the `https://` URL of the COG that you found on the internet into the viewer.
-
-## 
+Alternate viewers: 
 
 [COG-Explorer](https://geotiffjs.github.io/cog-explorer/#long=-112.370&lat=35.210&zoom=5&scene=&bands=&pipeline=)
 
 [COGEO.xyz](https://cogeo.xyz/){target=_blank}
+
+Try adding the `https://` URL of the COG that you found on the internet into the viewer.
+
+## **Step 3** Option 1: open a COG in QGIS
+
+* Open QGIS
+
+* In the "Layers" then "Add Layer" and then "Add Raster Layer" 
+
+* Choose the "**Source Type** and select "Protocol: HTTP(s), cloud, etc" for a file on your computer
+
+* Enter a valid `https://` in the `URl` field for a COG you found online
+
+## **Step3** Option 2: open a COG in ArcGIS Online
 
 # Additional Reading
 
