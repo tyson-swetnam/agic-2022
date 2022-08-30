@@ -107,6 +107,8 @@ Try adding the `https://` URL of the COG that you found on the internet into the
 
 ## **Step3** Option 2: open a COG in ArcGIS Online
 
+## **Step 4** Optional - create a COG from a GeoTIFF
+
 # Additional Reading
 
 [GeoTIFF Compression for Dummies](https://blog.cleverelephant.ca/2015/02/geotiff-compression-for-dummies.html){target=_blank} - suggests the best version is "a GeoTIFF, with JPEG compression, internally tiled, in the YCBCR color space, with internal overviews."
