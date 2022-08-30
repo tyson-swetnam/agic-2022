@@ -1,9 +1,9 @@
 
 [Jump to :material-hand-clap: hands-on lesson :material-school: ](#hands-on)
 
-## :material-code-json: GeoJSON (Geo+JSON)
+## Overview of :material-code-json: GeoJSON (Geo+JSON)
 
-[JavaScript Object Notation (JSON)](https://www.json.org/json-en.html){target=_blank} is a lightweight, text-based, language-independent data interchange format. 
+To begin with, [JavaScript Object Notation (JSON)](https://www.json.org/json-en.html){target=_blank} is a lightweight, text-based, language-independent data interchange format. 
 
 * [JSON syntax](https://www.w3schools.com/js/js_json_syntax.asp){target=_blank}
 * [rfc7159](https://datatracker.ietf.org/doc/html/rfc7159){target=_blank}
@@ -43,7 +43,8 @@
 
 [:material-code-json: GeoJSON](https://geojson.org/){target=_blank} is a format for encoding a variety of geographic data structures.
 
-* [geojson.org](https://geojson.org){target=_blank}
+* [GeoJSON Specification](https://geojson.org){target=_blank}
+
 * [rfc7946](https://datatracker.ietf.org/doc/html/rfc7946){target=_blank}
 
 A GeoJSON Object may represent a region of space: a **Geometry**, a **Feature**, or a list of Features called a **FeatureCollection**.

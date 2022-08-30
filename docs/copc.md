@@ -1,6 +1,6 @@
 [Jump to :material-hand-clap: hands-on lesson :material-school: ](#hands-on)
 
-## :material-file-cloud: Cloud Optimized Point Cloud (COPC)
+## Overview of :material-file-cloud: Cloud Optimized Point Cloud (COPC)
 
 ### Background on COPC
 

@@ -1,16 +1,21 @@
 [Jump to :material-hand-clap: hands-on lesson :material-school: ](#hands-on)
 
-## :material-layers: Cloud Optimized GeoTIFF (COG)
+## Overview of :material-layers: Cloud Optimized GeoTIFF (COG)
 
 Cloud Optimized GeoTIFFs (COGs) are just like regular [GeoTIFF](https://www.ogc.org/standards/geotiff){target=_blank}
 
-COGs have three major features: internal tiling, internal overview structures, and HTTP GET Range Requests
-
 [COG Specification](https://github.com/cogeotiff/cog-spec/blob/master/spec.md){target=_blank}
+
+COGs have three major features: internal tiling, internal overview structures, and HTTP GET Range Requests
 
 ### Tiling
 
 Internal Tiling GeoTIFFs (typically into 128x128, 256x256, or 512x512 pixel tiles).  
+
+<figure markdown>
+  <a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/geotiff_pyramid.png" target="blank" rel="geotiff_pyramid">![geotiff_pyramid](https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/geotiff_pyramid.png){ width="700" } </a>
+    <figcaption>GeoTIFF pyramid by Zoom Level</figcaption>
+</figure>
 
 #### Virtual Raster Tiles (VRT)
 
@@ -67,6 +72,8 @@ There are numerous cloud based data stores hosting COGs, take a look through a f
 [Google Earth Engine](https://developers.google.com/earth-engine/guides/image_overview){target=_blank} supports Image Collections in COG format.
 
 [Microsoft Planetary Computer Catalog](https://planetarycomputer.microsoft.com/catalog){target=_blank} - most of the imagery datasets in Planetary Computer are hosted as COGs
+
+[OpenAerialMap](https://openaerialmap.org/){target=_blank} hosts drone imagery
 
 ### Public Datasets
 

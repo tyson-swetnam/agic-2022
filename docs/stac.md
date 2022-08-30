@@ -1,6 +1,6 @@
 [Jump to :material-hand-clap: hands-on lesson :material-school: ](#hands-on)
 
-## What is a STAC
+## Overview of :material-layers-triple: SpatioTemporal Asset Catalogs (STAC)
 
 The [SpatioTemporal Asset Catalog (STAC)](https://stacspec.org/en){target=_blank} specification provides a common structure for describing and cataloging spatiotemporal assets on the internet. 
 
