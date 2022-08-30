@@ -39,13 +39,9 @@ The lastest versions of [GDAL](https://gdal.org){target=_blank} (>v3.1) have [CO
 
 [Most GIS software](https://gdal.org/software_using_gdal.html#software-using-gdal){target=_blank} use GDAL.
 
-``` bash
-gdal_translate example.tif example_webmerc_cog.tif -of COG -co TILING_SCHEME=GoogleMapsCompatible -co COMPRESS=JPEG
-```
+??? Tip "Install GDAL"
 
-??? Tip "Installing GDAL locally"
-
-    GDAL installation can be difficult. When different python environments are installed on a desktop or laptop GDAL can become broken or incompatiblity issues can come up.
+    GDAL installation can at times be difficult. When different older python environments are installed on a desktop or laptop GDAL can become broken or incompatiblity issues can come up when installing it.
 
     [USGS Windows GDAL Installation Guide](https://apps.nationalmap.gov/raster-conversion/gdal-installation-and-setup-guide.html){target=_blank} 
 
@@ -55,11 +51,15 @@ gdal_translate example.tif example_webmerc_cog.tif -of COG -co TILING_SCHEME=Goo
 
     [Anaconda](https://anaconda.org/conda-forge/gdal){target=_blank} and its package management `conda`
 
-    [Docker `osgeo/gdal`](https://hub.docker.com/r/osgeo/gdal) images are maintained on the Docker Hub
+    [Docker `osgeo/gdal`](https://hub.docker.com/r/osgeo/gdal){target=_blank} images are maintained on the Docker Hub
 
-## Example COGs
+[`cogger`](https://github.com/airbusgeo/cogger){target=_blank} is a rapid COG generator from GeoTIFF
+
+## Example COGs in WebGL
 
 [Open Layers COGs](https://openlayers.org/en/latest/examples/cog.html){target=_blank}
+
+[Open Layers WebGLTile Pyramid from COG](https://openlayers.org/en/latest/examples/cog-pyramid.html){target=_blank}
 
 # Hands On
 
@@ -89,8 +89,6 @@ Open in your browser the [COG Viewer](https://www.cogeo.org/map/)
 
 Alternate viewers: 
 
-[COG-Explorer](https://geotiffjs.github.io/cog-explorer/#long=-112.370&lat=35.210&zoom=5&scene=&bands=&pipeline=)
-
 [COGEO.xyz](https://cogeo.xyz/){target=_blank}
 
 Try adding the `https://` URL of the COG that you found on the internet into the viewer.
@@ -101,16 +99,56 @@ Try adding the `https://` URL of the COG that you found on the internet into the
 
 * In the "Layers" then "Add Layer" and then "Add Raster Layer" 
 
-* Choose the "**Source Type** and select "Protocol: HTTP(s), cloud, etc" for a file on your computer
+* Choose the Source Type and select "Protocol: HTTP(s), cloud, etc" for a file on your computer
 
 * Enter a valid `https://` in the `URl` field for a COG you found online
 
-## **Step3** Option 2: open a COG in ArcGIS Online
-
 ## **Step 4** Optional - create a COG from a GeoTIFF
+
+Open a console and check your `gdal` installation
+
+``` bash
+gdalinfo --version
+```
+
+Make sure that you're operating on at least `v3.1` of GDAL (current latest `v3.5.1`)
+
+[Sample USGS GeoTIFFs](https://pubs.usgs.gov/ds/121/prescott/prescott.html){target=_blank}
+
+``` bash
+gdal_translate p_ndvi_cor.tif p_ndvi_cor_cog.tif \
+-b 1 -b 2 -b 3  \
+-of COG \
+-co TILING_SCHEME=GoogleMapsCompatible \
+-co COMPRESS=JPEG \
+-co OVERVIEW_QUALITY=100 \
+-co QUALITY=100
+```
+
+Check the file size of your example file and your output file. Which is larger?
+
+Now, if we want to add overviews to the output `p_ndvi_cor_cog.tif`:
+
+``` bash
+gdaladdo \
+  --config COMPRESS_OVERVIEW JPEG \
+  --config JPEG_QUALITY_OVERVIEW 100 \
+  --config PHOTOMETRIC_OVERVIEW YCBCR \
+  --config INTERLEAVE_OVERVIEW PIXEL \
+  -r average \
+  p_ndvi_cor_cog.tif \
+  2 4 8 16
+```
+
+## **Step 5** Optional: upload the file to a public `https://` endpoint
+
+If you have your own web server, or public cloud bucket, you can upload your new COG and view it using one of the example viewers, or try loading it using QGIS.
+
+Here is an [example using the CyVerse Data Store and the CoGEO viewer](https://www.cogeo.org/map/#/url/https%3A%2F%2Fdata.cyverse.org%2Fdav-anon%2Fiplant%2Fhome%2Ftswetnam%2Fagic-2022%2Fp_ndvi_cor_cog.tif/center/-112.9834,34.4884/zoom/14){target=_blank}
 
 # Additional Reading
 
 [GeoTIFF Compression for Dummies](https://blog.cleverelephant.ca/2015/02/geotiff-compression-for-dummies.html){target=_blank} - suggests the best version is "a GeoTIFF, with JPEG compression, internally tiled, in the YCBCR color space, with internal overviews."
 
 [COGS in Production blog post by Sean Rennie](https://sean-rennie.medium.com/cogs-in-production-e9a42c7f54e4){target=_blank}
+

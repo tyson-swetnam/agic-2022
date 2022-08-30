@@ -1,0 +1,53 @@
+{
+    "pipeline": [
+        {
+"bounds": "([-12521659, -12513587], [4099398, 4107470], [1500, 3200])",
+"filename": "https://s3-us-west-2.amazonaws.com/usgs-lidar-public/USGS_LPC_AZ_VerdeKaibab_B2_TL_2018_LAS_2019/ept.json",
+"type": "readers.ept",
+"requests": 128,
+"tag": "readdata"
+        },
+        {
+            "type":"filters.outlier",
+            "method":"statistical",
+            "mean_k":12,
+            "multiplier":2.2
+        },
+        {
+            "type":"filters.smrf",
+            "scalar":1.2,
+            "slope":0.2,
+            "threshold":0.45,
+            "window":16.0
+        },
+        {
+            "type": "filters.range",
+            "limits": "Classification![7:7],Z[2000:2700]"
+        },
+        {
+            "type":"filters.hag_delaunay"
+        },
+        {
+            "in_srs": "EPSG:3857",
+            "out_srs": "EPSG:26912",
+            "tag": "reprojectUTM",
+            "type": "filters.reprojection"
+        },
+        {
+            "filename": "USGS_LPC_AZ_VerdeKaibab_B2_TL_2018_LAS_2019.copc.laz",
+            "inputs": [ "reprojectUTM" ],
+            "tag": "writerscopc",
+            "type": "writers.copc"
+        },
+        {
+            "filename": "USGS_LPC_AZ_VerdeKaibab_B2_TL_2018_LAS_2019_dem.tif",
+            "gdalopts": "tiled=yes,     compress=deflate",
+            "inputs": [ "writerscopc" ],
+            "nodata": -9999,
+            "output_type": "min",
+            "resolution": 1.0,
+            "type": "writers.gdal",
+            "window_size": 6
+        }
+    ]
+}
