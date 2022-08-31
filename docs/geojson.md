@@ -51,7 +51,17 @@ A GeoJSON Object may represent a region of space: a **Geometry**, a **Feature**,
 
 ### :material-angle-acute: Geometry
 
-There are seven types of geometric shapes which can be defined in GeoJSON.
+There are seven types of geometric shapes which can be defined in GeoJSON. Where the "type" can be any of the following:
+
+| Type | Geometry |
+| :--: | :--:     |
+|Point   |  ![Point](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/SFA_Point.svg/51px-SFA_Point.svg.png)|
+| LineString   |  ![Linestring](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/SFA_LineString.svg/51px-SFA_LineString.svg.png)|
+|Polygon   |   ![Polygon](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/SFA_Polygon.svg/51px-SFA_Polygon.svg.png) |
+|MultiPoint|  ![](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/SFA_MultiPoint.svg/51px-SFA_MultiPoint.svg.png)  |
+| MultiLineString  |    ![MultiLineString](https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/SFA_MultiLineString.svg/51px-SFA_MultiLineString.svg.png)|
+|MultiPolygon   |  ![MultiPolygon](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/SFA_MultiPolygon_with_hole.svg/51px-SFA_MultiPolygon_with_hole.svg.png)
+| GeometryCollection | ![GeometryCollection](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/SFA_GeometryCollection.svg/51px-SFA_GeometryCollection.svg.png) |
 
 * Point, LineString and Polygon are *single type geometry objects* 
 
