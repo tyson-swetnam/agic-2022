@@ -407,8 +407,7 @@ UA Data Science Institute.
 
 ## **Step 1** Start a Jupyter Notebook using Google CoLab
 
-
+[![image](https://colab.research.google.com/assets/colab-badge.svg)](https://githubtocolab.com/tyson-swetnam/agic-2022/blob/main/docs/notebooks/xarray.ipynb)
 
 ## **Step 2** Run the notebook cells using example code
 
-## **Step 3** 
