@@ -512,7 +512,9 @@ Open a new tab and explore the different STAC Catalogs that have been added ther
 
 Examples of STAC Browsers
 
-* [Microsoft Planetary Computer STAC](https://planetarycomputer.microsoft.com/catalog){target=_blank}
+* [Microsoft Planetary Computer STACs](https://planetarycomputer.microsoft.com/catalog){target=_blank}
+
+* [Microsoft Planetary Computer Jupyter Notebook Examples](https://github.com/microsoft/PlanetaryComputerExamples){target=_blank}
 
 * [STAC Index](https://stacindex.org/){target=_blank}
 
@@ -520,10 +522,25 @@ Examples of STAC Browsers
 
 * [Scene Explorer ESRI](https://www.esri.com/en-us/arcgis-marketplace/listing/products/b1689f3ddcf742de988e0d5a070b31c4){target=_blank}
 
+* [Awesome Community Datasets](https://samapriya.github.io/awesome-gee-community-datasets/){target=_blank}
 
 ## **Step 2** Viewing the STAC JSON
 
 Normally, you should use a STAC Browser to view a rendered STAC Catalog.
 
 However, there may be times that you need to look directly at a catalog json
+
+Here we're going to look at a Community dataset of Google Earth Engine Collections,
+
+[https://github.com/samapriya/awesome-gee-community-datasets](https://github.com/samapriya/awesome-gee-community-datasets)
+
+Look at the STAC json for [https://raw.githubusercontent.com/samapriya/awesome-gee-community-datasets/master/catalog/stac_catalog.json](https://raw.githubusercontent.com/samapriya/awesome-gee-community-datasets/master/catalog/stac_catalog.json){target=_blank}
+
+Note: there is "root" "self" and "child" in the "links".
+
+There are hundreds of "child" .jsons in this catalog. Each is separately maintained in a sub-folder for the repository, [https://github.com/samapriya/awesome-gee-community-datasets/tree/master/catalog](https://github.com/samapriya/awesome-gee-community-datasets/tree/master/catalog)
+
+Note: each child json has its own "self" "parent" and "root" in the "links" which allow them to be browsed by the stac-browser:
+
+[https://radiantearth.github.io/stac-browser/#/external/raw.githubusercontent.com/samapriya/awesome-gee-community-datasets/master/catalog/stac_catalog.json](https://radiantearth.github.io/stac-browser/#/external/raw.githubusercontent.com/samapriya/awesome-gee-community-datasets/master/catalog/stac_catalog.json)
 
