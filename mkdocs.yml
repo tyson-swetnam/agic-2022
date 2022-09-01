@@ -47,15 +47,26 @@ theme:
 
   # Default values, taken from mkdocs_theme.yml
   language: en
-  palette: 
-    - scheme: default
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
       toggle:
-        icon: material/toggle-switch-off-outline
-        name: Switch to dark mode
-    - scheme: slate 
-      toggle:
-        icon: material/toggle-switch
+        icon: material/brightness-auto
         name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: agic 
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
   font:
     text: Montserrat
     code: Regular
@@ -68,6 +79,9 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/tyson-swetnam/agic-2022.git
+
+extra_css:
+  - stylesheets/extra.css
 
 # Extensions
 markdown_extensions:

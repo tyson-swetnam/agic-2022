@@ -6,6 +6,8 @@ The [SpatioTemporal Asset Catalog (STAC)](https://stacspec.org/en){target=_blank
 
 A [STAC Browser](https://radiantearth.github.io/stac-browser/#/){target=_blank} allows users to search, preview, and access these massive geospatial assets hosted over conventional `https://` endpoints and cloud-base object stores (i.e., `s3://` buckets).
 
+[STAC Specification]()
+
 There are four components to making a given STAC run. They can be used independently of one another, but most often they are all used together:
 
 | Component | Definition | Format |
@@ -498,28 +500,30 @@ Generating your own STACs can be done manually, programmatically, or using a tem
 
 [Create a Catalog with PyStac](https://developers.planet.com/docs/planetschool/introduction-to-stac-part-2-creating-an-example-stac-catalog-of-planet-imagery-with-pystac/){target=_blank}
 
+[Official STAC Learning Examples](https://stacindex.org/learn){target=_blank}
+
 # Hands On
 
 ## **Step 1** Go to [https://radiantearth.github.io/stac-browser/#](https://radiantearth.github.io/stac-browser/#){target=_blank}
 
 Radiant Earth maintains the [STAC Browser](https://radiantearth.github.io/stac-browser/#/){target=_blank}
 
-Explore the different STAC Catalogs that have been added to this Browser.
+Open a new tab and explore the different STAC Catalogs that have been added there.
 
-## Step 2 Viewing  
+Examples of STAC Browsers
 
-## Examples of STAC Browsers
+* [Microsoft Planetary Computer STAC](https://planetarycomputer.microsoft.com/catalog){target=_blank}
 
-[STAC Index](https://stacindex.org/){target=_blank}
+* [STAC Index](https://stacindex.org/){target=_blank}
 
-[QGIS STAC Browser Plugin](https://github.com/stac-utils/qgis-stac-plugin){target=_blank}
+* [QGIS STAC Browser Plugin](https://github.com/stac-utils/qgis-stac-plugin){target=_blank}
 
-[Scene Explorer ESRI](https://www.esri.com/en-us/arcgis-marketplace/listing/products/b1689f3ddcf742de988e0d5a070b31c4){target=_blank}
+* [Scene Explorer ESRI](https://www.esri.com/en-us/arcgis-marketplace/listing/products/b1689f3ddcf742de988e0d5a070b31c4){target=_blank}
 
-## STAC Major Sponsors & Contributors
 
-Microsoft
+## **Step 2** Viewing the STAC JSON
 
-Radiant Earth
+Normally, you should use a STAC Browser to view a rendered STAC Catalog.
 
-Planet
+However, there may be times that you need to look directly at a catalog json
+

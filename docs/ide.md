@@ -12,7 +12,7 @@ The most popular software development IDE for working with code is Microsoft's V
 
 Project Jupyter is focused on [:material-language-python: Python](https://www.python.org/){target=_blank} but has broad compatibility (kernels) across [almost every programming language](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels){target=_blank}. Project Jupyter was adopted as the default IDE by several cloud platforms for [on-demand virtual machines](#on-demand-cloud-based-ide).
 
-[:material-language-python: Geospatial Ecosystem])(https://ecosystem.pythongis.org/){target=_blank}
+[:material-language-python: Geospatial Ecosystem](https://ecosystem.pythongis.org/){target=_blank}
 
 <a href="https://jupyter.org/" align="left" target="blank" rel="jupyter">![jupyter](https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/207px-Jupyter_logo.svg.png){ width="100" }</a>
 
