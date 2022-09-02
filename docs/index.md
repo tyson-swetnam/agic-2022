@@ -15,7 +15,7 @@ This website follows the [FAIR](https://www.go-fair.org/fair-principles/){target
 
 | Lessons | Estimated Time to Complete | Link |
 |---------|----------------------------|------|
-| Introduction to Cloud Native Data Types | 15 minutes | [presentation](){target=_blank} |
+| Introduction to Cloud Native Data Types | 15 minutes | [presentation](https://docs.google.com/presentation/d/1MXOqsIC5TzPB8GH-UweZp3BxGMFrj-qPdPCHSOlqbjU/edit?usp=sharing){target=_blank} |
 | [Hands on with GeoJSON](geojson.md) | 30 minutes | [GeoJSON.io](https://geojson.io){target=_blank} |
 | [Hands on with Cloud Optimized GeoTIFF](cog.md) | 30 minutes | [cogeo.org](https://cogeo.org){target=_blank} |
 | Break | 10 minutes | |
