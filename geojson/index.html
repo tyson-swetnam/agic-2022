@@ -1,0 +1,1623 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="AGIC 2022 Cloud Native Data Workship">
+      
+      
+        <meta name="author" content="Tyson Lee Swetnam">
+      
+      
+        <link rel="canonical" href="https://tyson-swetnam.github.io/agic-2022/geojson/">
+      
+      <link rel="icon" href="../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.2.11">
+    
+    
+      
+        <title>GeoJSON - Cloud Native Data Workshop</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.8c5ef100.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.9647289d.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,700,700i%7CRegular:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Montserrat";--md-code-font:"Regular"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#overview-of-geojson-geojson" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Cloud Native Data Workshop" class="md-header__button md-logo" aria-label="Cloud Native Data Workshop" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 20a6 6 0 0 1-6-6c0-3.09 2.34-5.64 5.35-5.96A7.496 7.496 0 0 1 12 4a7.5 7.5 0 0 1 7.35 6A5.02 5.02 0 0 1 24 15a5 5 0 0 1-5 5H6m12.5-8H18a1 1 0 0 1-1-1v-1a2 2 0 0 0-2-2h-1.5v2H15v1a2 2 0 0 0 2 2 2 2 0 0 0-2 2v1h-1.5v2H15a2 2 0 0 0 2-2v-1a1 1 0 0 1 1-1h.5v-2m-13 0v2H6a1 1 0 0 1 1 1v1a2 2 0 0 0 2 2h1.5v-2H9v-1a2 2 0 0 0-2-2 2 2 0 0 0 2-2v-1h1.5V8H9a2 2 0 0 0-2 2v1a1 1 0 0 1-1 1h-.5Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cloud Native Data Workshop
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              GeoJSON
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_3" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="agic" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_3">
+          
+            <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tyson-swetnam/agic-2022" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    agic-2022
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Cloud Native Data Workshop" class="md-nav__button md-logo" aria-label="Cloud Native Data Workshop" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 20a6 6 0 0 1-6-6c0-3.09 2.34-5.64 5.35-5.96A7.496 7.496 0 0 1 12 4a7.5 7.5 0 0 1 7.35 6A5.02 5.02 0 0 1 24 15a5 5 0 0 1-5 5H6m12.5-8H18a1 1 0 0 1-1-1v-1a2 2 0 0 0-2-2h-1.5v2H15v1a2 2 0 0 0 2 2 2 2 0 0 0-2 2v1h-1.5v2H15a2 2 0 0 0 2-2v-1a1 1 0 0 1 1-1h.5v-2m-13 0v2H6a1 1 0 0 1 1 1v1a2 2 0 0 0 2 2h1.5v-2H9v-1a2 2 0 0 0-2-2 2 2 0 0 0 2-2v-1h1.5V8H9a2 2 0 0 0-2 2v1a1 1 0 0 1-1 1h-.5Z"/></svg>
+
+    </a>
+    Cloud Native Data Workshop
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tyson-swetnam/agic-2022" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    agic-2022
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ide/" class="md-nav__link">
+        Integrated Development Environments
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Vectors
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Vectors" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Vectors
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          GeoJSON
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        GeoJSON
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview-of-geojson-geojson" class="md-nav__link">
+    Overview of  GeoJSON (Geo+JSON)
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview of  GeoJSON (Geo+JSON)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#geometry" class="md-nav__link">
+     Geometry
+  </a>
+  
+    <nav class="md-nav" aria-label=" Geometry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#point" class="md-nav__link">
+     Point
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linestring" class="md-nav__link">
+     LineString
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#polygon" class="md-nav__link">
+     Polygon
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multipoint" class="md-nav__link">
+     MultiPoint
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multilinestring" class="md-nav__link">
+     MultiLineString
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multipolygon" class="md-nav__link">
+     MultiPolygon
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geometrycollection" class="md-nav__link">
+     GeometryCollection
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature" class="md-nav__link">
+     Feature
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#featurecollection" class="md-nav__link">
+     FeatureCollection
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-json-types" class="md-nav__link">
+    Related JSON types
+  </a>
+  
+    <nav class="md-nav" aria-label="Related JSON types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#topojson" class="md-nav__link">
+    TopoJSON
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newline-delimited-geojson" class="md-nav__link">
+    Newline-delimited GeoJSON
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#geojson-webpages" class="md-nav__link">
+    GeoJSON Webpages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hands-on" class="md-nav__link">
+    Hands-On
+  </a>
+  
+    <nav class="md-nav" aria-label="Hands-On">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-go-to-geojsonio" class="md-nav__link">
+    Step 1 Go to GeoJSON.io
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-export-a-geojson" class="md-nav__link">
+    Step 2 Export a GeoJSON
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-option-1-open-the-geojson-in-qgis" class="md-nav__link">
+    Step 3 Option 1: Open the GeoJSON in QGIS
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3 Option 1: Open the GeoJSON in QGIS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loading-geojson-from-https" class="md-nav__link">
+    Loading GeoJSON from HTTP(S)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-option-2-open-the-geojson-in-arcgis-online" class="md-nav__link">
+    Step 3 Option 2: Open the GeoJSON in ArcGIS Online
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3 Option 2: Open the GeoJSON in ArcGIS Online">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#open-the-geojson-in-an-ide-like-vs-code-or-jupyter" class="md-nav__link">
+    Open the GeoJSON in an IDE (like VS Code or Jupyter)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-optional-convert-a-shp-file-to-geojson" class="md-nav__link">
+    Step 4 (Optional): Convert a SHP file to GeoJSON
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-reading" class="md-nav__link">
+    Additional Reading
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../copc/" class="md-nav__link">
+        Cloud Optimized Point Clouds
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Rasters
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Rasters" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Rasters
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cog/" class="md-nav__link">
+        Cloud Optimized GeoTiff
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xarray/" class="md-nav__link">
+        X Array
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../zarr/" class="md-nav__link">
+        Zarr
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stac/" class="md-nav__link">
+        SpatioTemporal Asset Catalogs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Jupyter Notebook Examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Jupyter Notebook Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Jupyter Notebook Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notebooks/geojson/" class="md-nav__link">
+        GeoJSON
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notebooks/copc/" class="md-nav__link">
+        COPC
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notebooks/cog/" class="md-nav__link">
+        COG
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notebooks/xarray/" class="md-nav__link">
+        XArray
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notebooks/zarr/" class="md-nav__link">
+        Zarr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notebooks/stac/" class="md-nav__link">
+        STAC
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview-of-geojson-geojson" class="md-nav__link">
+    Overview of  GeoJSON (Geo+JSON)
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview of  GeoJSON (Geo+JSON)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#geometry" class="md-nav__link">
+     Geometry
+  </a>
+  
+    <nav class="md-nav" aria-label=" Geometry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#point" class="md-nav__link">
+     Point
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linestring" class="md-nav__link">
+     LineString
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#polygon" class="md-nav__link">
+     Polygon
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multipoint" class="md-nav__link">
+     MultiPoint
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multilinestring" class="md-nav__link">
+     MultiLineString
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multipolygon" class="md-nav__link">
+     MultiPolygon
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geometrycollection" class="md-nav__link">
+     GeometryCollection
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature" class="md-nav__link">
+     Feature
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#featurecollection" class="md-nav__link">
+     FeatureCollection
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-json-types" class="md-nav__link">
+    Related JSON types
+  </a>
+  
+    <nav class="md-nav" aria-label="Related JSON types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#topojson" class="md-nav__link">
+    TopoJSON
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newline-delimited-geojson" class="md-nav__link">
+    Newline-delimited GeoJSON
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#geojson-webpages" class="md-nav__link">
+    GeoJSON Webpages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hands-on" class="md-nav__link">
+    Hands-On
+  </a>
+  
+    <nav class="md-nav" aria-label="Hands-On">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-go-to-geojsonio" class="md-nav__link">
+    Step 1 Go to GeoJSON.io
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-export-a-geojson" class="md-nav__link">
+    Step 2 Export a GeoJSON
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-option-1-open-the-geojson-in-qgis" class="md-nav__link">
+    Step 3 Option 1: Open the GeoJSON in QGIS
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3 Option 1: Open the GeoJSON in QGIS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loading-geojson-from-https" class="md-nav__link">
+    Loading GeoJSON from HTTP(S)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-option-2-open-the-geojson-in-arcgis-online" class="md-nav__link">
+    Step 3 Option 2: Open the GeoJSON in ArcGIS Online
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3 Option 2: Open the GeoJSON in ArcGIS Online">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#open-the-geojson-in-an-ide-like-vs-code-or-jupyter" class="md-nav__link">
+    Open the GeoJSON in an IDE (like VS Code or Jupyter)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-optional-convert-a-shp-file-to-geojson" class="md-nav__link">
+    Step 4 (Optional): Convert a SHP file to GeoJSON
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-reading" class="md-nav__link">
+    Additional Reading
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+
+
+
+                
+  <a href="https://github.com/tyson-swetnam/agic-2022/edit/main/docs/geojson.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<p><a href="#hands-on">Jump to <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.9 21.47a6.09 6.09 0 0 1-1.72-6.63l2.13-5.93a.765.765 0 0 1 1.38-.13l.31.55c.24.39.29.87.14 1.3l-.98 2.74.43.38L15.55 7c.35-.4.95-.44 1.36-.09.39.35.43.96.09 1.35l-4.45 5.03.58.51 5.45-6.18c.35-.4.96-.44 1.35-.09.4.35.44.97.07 1.36l-5.44 6.18.58.51 4.69-5.32c.35-.4.96-.44 1.35-.09s.44.96.09 1.33l-4.69 5.34.57.51 3.17-3.59c.35-.4.96-.44 1.36-.09s.43.96.08 1.33l-5.2 5.92a6.13 6.13 0 0 1-8.66.55m3.69-12.25L14.43 6c.24-.27.54-.5.87-.63l.38-.78a.947.947 0 0 0-.44-1.28.964.964 0 0 0-1.28.44l-2.51 5.14c.05.11.11.22.14.33M11 8v.05l2.78-5.67a.965.965 0 0 0-.45-1.28.951.951 0 0 0-1.28.44L9.41 6.95c.65.11 1.22.48 1.59 1.05m-6.23 6.33L6.9 8.4c.27-.75.9-1.26 1.65-1.43l2.14-4.39a.961.961 0 0 0-.44-1.28.952.952 0 0 0-1.28.44L5 9.84l-.5-.25.21-2.91c.04-.45-.14-.9-.46-1.22L3.79 5c-.47-.43-1.24-.14-1.29.5L2 11.79c-.13 2.04.77 3.99 2.35 5.21-.02-.88.11-1.79.42-2.67Z"/></svg></span> hands-on lesson <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82Z"/></svg></span> </a></p>
+<h2 id="overview-of-geojson-geojson">Overview of <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3h2v2H5v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5h2v2H5c-1.07-.27-2-.9-2-2v-4a2 2 0 0 0-2-2H0v-2h1a2 2 0 0 0 2-2V5a2 2 0 0 1 2-2m14 0a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1v2h-1a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-2v-2h2v-5a2 2 0 0 1 2-2 2 2 0 0 1-2-2V5h-2V3h2m-7 12a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m-4 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m8 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1Z"/></svg></span> GeoJSON (Geo+JSON)<a class="headerlink" href="#overview-of-geojson-geojson" title="Permanent link">&para;</a></h2>
+<p>To begin with, <a href="https://www.json.org/json-en.html" target="_blank">JavaScript Object Notation (JSON)</a> is a lightweight, text-based, language-independent data interchange format. </p>
+<ul>
+<li><a href="https://www.w3schools.com/js/js_json_syntax.asp" target="_blank">JSON syntax</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc7159" target="_blank">rfc7159</a></li>
+</ul>
+<details class="info">
+<summary>an old style example the JSON Schema for a geospatial object</summary>
+<p><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;$id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/geographical-location.schema.json&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://json-schema.org/draft/2020-12/schema&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AGIC Venue&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A geographical coordinate where this workshop is being taught&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;longitude&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;latitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;number&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;minimum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-90</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;maximum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">90</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;longitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;number&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;minimum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-180</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;maximum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+The location <strong>data</strong> section of the JSON later describes a point:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;latitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">34.5510</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;longitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-112.4471</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</details>
+<p><a href="https://geojson.org/" target="_blank"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3h2v2H5v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5h2v2H5c-1.07-.27-2-.9-2-2v-4a2 2 0 0 0-2-2H0v-2h1a2 2 0 0 0 2-2V5a2 2 0 0 1 2-2m14 0a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1v2h-1a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-2v-2h2v-5a2 2 0 0 1 2-2 2 2 0 0 1-2-2V5h-2V3h2m-7 12a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m-4 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m8 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1Z"/></svg></span> GeoJSON</a> is a format for encoding a variety of geographic data structures.</p>
+<ul>
+<li>
+<p><a href="https://geojson.org" target="_blank">GeoJSON Specification</a></p>
+</li>
+<li>
+<p><a href="https://datatracker.ietf.org/doc/html/rfc7946" target="_blank">rfc7946</a></p>
+</li>
+</ul>
+<p>A GeoJSON Object may represent a region of space: a <strong>Geometry</strong>, a <strong>Feature</strong>, or a list of Features called a <strong>FeatureCollection</strong>.</p>
+<h3 id="geometry"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 19H4.09L14.18 4.43l1.64 1.14-4.54 6.56c1.61.83 2.72 2.49 2.72 4.41 0 .16 0 .31-.03.46H20v2M7.91 17h4.05c.04-.15.04-.3.04-.46 0-1.26-.76-2.32-1.86-2.76L7.91 17Z"/></svg></span> Geometry<a class="headerlink" href="#geometry" title="Permanent link">&para;</a></h3>
+<p>There are seven types of geometric shapes which can be defined in GeoJSON. Where the "type" can be any of the following:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Type</th>
+<th align="center">Geometry</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Point</td>
+<td align="center"><img alt="Point" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/SFA_Point.svg/51px-SFA_Point.svg.png" /></td>
+</tr>
+<tr>
+<td align="center">LineString</td>
+<td align="center"><img alt="Linestring" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/SFA_LineString.svg/51px-SFA_LineString.svg.png" /></td>
+</tr>
+<tr>
+<td align="center">Polygon</td>
+<td align="center"><img alt="Polygon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/SFA_Polygon.svg/51px-SFA_Polygon.svg.png" /></td>
+</tr>
+<tr>
+<td align="center">MultiPoint</td>
+<td align="center"><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/SFA_MultiPoint.svg/51px-SFA_MultiPoint.svg.png" /></td>
+</tr>
+<tr>
+<td align="center">MultiLineString</td>
+<td align="center"><img alt="MultiLineString" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/SFA_MultiLineString.svg/51px-SFA_MultiLineString.svg.png" /></td>
+</tr>
+<tr>
+<td align="center">MultiPolygon</td>
+<td align="center"><img alt="MultiPolygon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/SFA_MultiPolygon_with_hole.svg/51px-SFA_MultiPolygon_with_hole.svg.png" /></td>
+</tr>
+<tr>
+<td align="center">GeometryCollection</td>
+<td align="center"><img alt="GeometryCollection" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/SFA_GeometryCollection.svg/51px-SFA_GeometryCollection.svg.png" /></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>Point, LineString and Polygon are <em>single type geometry objects</em> </p>
+</li>
+<li>
+<p>MultiPoint, MultiLineString, and MultiPolygon are <em>multipart geometry objects</em></p>
+</li>
+</ul>
+<p>Each of the examples below represents a valid and complete GeoJSON object:</p>
+<h4 id="point"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 11.5A2.5 2.5 0 0 1 9.5 9 2.5 2.5 0 0 1 12 6.5 2.5 2.5 0 0 1 14.5 9a2.5 2.5 0 0 1-2.5 2.5M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Z"/></svg></span> Point<a class="headerlink" href="#point" title="Permanent link">&para;</a></h4>
+<details class="info">
+<summary><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3h2v2H5v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5h2v2H5c-1.07-.27-2-.9-2-2v-4a2 2 0 0 0-2-2H0v-2h1a2 2 0 0 0 2-2V5a2 2 0 0 1 2-2m14 0a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1v2h-1a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-2v-2h2v-5a2 2 0 0 1 2-2 2 2 0 0 1-2-2V5h-2V3h2m-7 12a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m-4 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m8 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1Z"/></svg></span> GeoJSON Point Schema</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Point&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;coordinates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">-112.4471</span><span class="p">,</span><span class="w"> </span><span class="mf">34.5510</span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>A <code>Point</code> geometry is represented by a single set of longitude then latitude coordinates, optionally elevation (above mean sea level) can also be included for a third axis.  </p>
+</details>
+<h4 id="linestring"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2 3v6h2.95l2 6H6v6h6v-4.59L17.41 11H22V5h-6v4.57L10.59 15H9.06l-2-6H8V3M4 5h2v2H4m14 0h2v2h-2M8 17h2v2H8Z"/></svg></span> LineString<a class="headerlink" href="#linestring" title="Permanent link">&para;</a></h4>
+<details class="info">
+<summary><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3h2v2H5v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5h2v2H5c-1.07-.27-2-.9-2-2v-4a2 2 0 0 0-2-2H0v-2h1a2 2 0 0 0 2-2V5a2 2 0 0 1 2-2m14 0a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1v2h-1a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-2v-2h2v-5a2 2 0 0 1 2-2 2 2 0 0 1-2-2V5h-2V3h2m-7 12a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m-4 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m8 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1Z"/></svg></span> GeoJSON LineString Schema</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LineString&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;coordinates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span>
+<span class="w">      </span><span class="p">[</span><span class="mf">-112.4470</span><span class="p">,</span><span class="w"> </span><span class="mf">34.5510</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">-112.4695</span><span class="p">,</span><span class="w">  </span><span class="mf">34.541</span><span class="p">]</span><span class="w">  </span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>A <code>Line</code> geometry uses two or more sets of coordinate pairs to create a line or multi-line.</p>
+</details>
+<h4 id="polygon"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2 2v6h2.28l1.29 8H4v6h6v-1.94l5-.01V22h6v-6h-1.83L20 9h2V3h-6v3.53L14.8 8H9.59L8 5.82V2M4 4h2v2H4m14-1h2v2h-2M6.31 8h.8L9 10.59V14h6v-3.09L16.57 9H18l-.84 7H15v2.06h-5V16H7.6m3.4-6h2v2h-2m-5 6h2v2H6m11-2h2v2h-2"/></svg></span> Polygon<a class="headerlink" href="#polygon" title="Permanent link">&para;</a></h4>
+<details class="info">
+<summary><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3h2v2H5v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5h2v2H5c-1.07-.27-2-.9-2-2v-4a2 2 0 0 0-2-2H0v-2h1a2 2 0 0 0 2-2V5a2 2 0 0 1 2-2m14 0a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1v2h-1a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-2v-2h2v-5a2 2 0 0 1 2-2 2 2 0 0 1-2-2V5h-2V3h2m-7 12a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m-4 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m8 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1Z"/></svg></span> GeoJSON Polygon Schema</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Polygon&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;coordinates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="p">[[</span><span class="mf">-112.485</span><span class="p">,</span><span class="w"> </span><span class="mf">34.529</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">-112.445</span><span class="p">,</span><span class="w"> </span><span class="mf">34.529</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">-112.445</span><span class="p">,</span><span class="w"> </span><span class="mf">34.559</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">-112.485</span><span class="p">,</span><span class="w"> </span><span class="mf">34.559</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">-112.485</span><span class="p">,</span><span class="w"> </span><span class="mf">34.529</span><span class="p">]]</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>A <code>Polygon</code> has at least three sets of coordinate pairs which close the shape.</p>
+</details>
+<h4 id="multipoint"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 11.5A2.5 2.5 0 0 0 16.5 9 2.5 2.5 0 0 0 14 6.5 2.5 2.5 0 0 0 11.5 9a2.5 2.5 0 0 0 2.5 2.5M14 2c3.86 0 7 3.13 7 7 0 5.25-7 13-7 13S7 14.25 7 9a7 7 0 0 1 7-7M5 9c0 4.5 5.08 10.66 6 11.81L10 22S3 14.25 3 9c0-3.17 2.11-5.85 5-6.71C6.16 3.94 5 6.33 5 9Z"/></svg></span> MultiPoint<a class="headerlink" href="#multipoint" title="Permanent link">&para;</a></h4>
+<details class="info">
+<summary><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3h2v2H5v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5h2v2H5c-1.07-.27-2-.9-2-2v-4a2 2 0 0 0-2-2H0v-2h1a2 2 0 0 0 2-2V5a2 2 0 0 1 2-2m14 0a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1v2h-1a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-2v-2h2v-5a2 2 0 0 1 2-2 2 2 0 0 1-2-2V5h-2V3h2m-7 12a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m-4 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m8 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1Z"/></svg></span> GeoJSON MultiPoint Schema</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MultiPoint&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;coordinates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="p">[</span><span class="mf">-112.4470</span><span class="p">,</span><span class="w"> </span><span class="mf">34.5510</span><span class="p">],</span><span class="w"></span>
+<span class="w">      </span><span class="p">[</span><span class="mf">-112.4695</span><span class="p">,</span><span class="w">  </span><span class="mf">34.541</span><span class="p">]</span><span class="w"> </span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>A <code>MultiPoint</code> geometry is represented by multiple coordinate point pairs</p>
+</details>
+<h4 id="multilinestring"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2 3v6h2.95l2 6H6v6h6v-4.59L17.41 11H22V5h-6v4.57L10.59 15H9.06l-2-6H8V3M4 5h2v2H4m14 0h2v2h-2M8 17h2v2H8Z"/></svg></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 3v4.59L7.59 15H3v6h6v-4.58L16.42 9H21V3m-4 2h2v2h-2M5 17h2v2H5"/></svg></span> MultiLineString<a class="headerlink" href="#multilinestring" title="Permanent link">&para;</a></h4>
+<details class="info">
+<summary><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3h2v2H5v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5h2v2H5c-1.07-.27-2-.9-2-2v-4a2 2 0 0 0-2-2H0v-2h1a2 2 0 0 0 2-2V5a2 2 0 0 1 2-2m14 0a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1v2h-1a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-2v-2h2v-5a2 2 0 0 1 2-2 2 2 0 0 1-2-2V5h-2V3h2m-7 12a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m-4 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m8 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1Z"/></svg></span> GeoJSON MultiLineString Schema</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MultiLineString&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;coordinates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="p">[[</span><span class="mf">-112.44708</span><span class="p">,</span><span class="w"> </span><span class="mf">34.5510</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">-112.46953</span><span class="p">,</span><span class="w"> </span><span class="mf">34.540924</span><span class="p">]],</span><span class="w"> </span>
+<span class="w">      </span><span class="p">[[</span><span class="mf">-112.4471</span><span class="p">,</span><span class="w"> </span><span class="mf">34.5510</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">-112.4541</span><span class="p">,</span><span class="mf">34.54447</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">-112.46953</span><span class="p">,</span><span class="w"> </span><span class="mf">34.540924</span><span class="p">]]</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w">    </span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>A <code>MultiLineString</code> uses multiple lines which are not connected.</p>
+</details>
+<h4 id="multipolygon"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 1c-1.11 0-2 .89-2 2v11c0 1.11.89 2 2 2h4v4c0 1.11.89 2 2 2h11c1.11 0 2-.89 2-2V9c0-1.11-.89-2-2-2h-4V3c0-1.11-.89-2-2-2H3m0 2h11v4H9c-1.11 0-2 .89-2 2v5H3V3m6 6h5v5H9V9m7 0h4v11H9v-4h5c1.11 0 2-.89 2-2V9Z"/></svg></span> MultiPolygon<a class="headerlink" href="#multipolygon" title="Permanent link">&para;</a></h4>
+<details class="info">
+<summary><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3h2v2H5v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5h2v2H5c-1.07-.27-2-.9-2-2v-4a2 2 0 0 0-2-2H0v-2h1a2 2 0 0 0 2-2V5a2 2 0 0 1 2-2m14 0a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1v2h-1a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-2v-2h2v-5a2 2 0 0 1 2-2 2 2 0 0 1-2-2V5h-2V3h2m-7 12a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m-4 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m8 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1Z"/></svg></span> GeoJSON MultiPolygon Schema</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MultiPolygon&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;coordinates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="p">[[</span><span class="mf">-112.0</span><span class="p">,</span><span class="w"> </span><span class="mf">35.0</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">-112.0</span><span class="p">,</span><span class="w"> </span><span class="mf">34.0</span><span class="p">],</span><span class="w">  </span><span class="p">[</span><span class="mf">-113.0</span><span class="p">,</span><span class="w"> </span><span class="mf">34.0</span><span class="p">],</span><span class="w">  </span><span class="p">[</span><span class="mf">-113.0</span><span class="p">,</span><span class="w"> </span><span class="mf">35.0</span><span class="p">],</span><span class="w">  </span><span class="p">[</span><span class="mf">-112.0</span><span class="p">,</span><span class="w"> </span><span class="mf">35.0</span><span class="p">]]</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="p">[[</span><span class="mf">-112.50</span><span class="p">,</span><span class="w"> </span><span class="mf">35.50</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">-112.50</span><span class="p">,</span><span class="w"> </span><span class="mf">34.50</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">-113.50</span><span class="p">,</span><span class="w"> </span><span class="mf">34.50</span><span class="p">],</span><span class="w">  </span><span class="p">[</span><span class="mf">-113.50</span><span class="p">,</span><span class="w"> </span><span class="mf">35.50</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">-112.50</span><span class="p">,</span><span class="w"> </span><span class="mf">35.50</span><span class="p">]]</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="p">[[</span><span class="mf">-111.50</span><span class="p">,</span><span class="w"> </span><span class="mf">34.50</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">-111.50</span><span class="p">,</span><span class="w"> </span><span class="mf">33.50</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">-112.50</span><span class="p">,</span><span class="w"> </span><span class="mf">33.50</span><span class="p">],</span><span class="w">  </span><span class="p">[</span><span class="mf">-112.50</span><span class="p">,</span><span class="w"> </span><span class="mf">34.50</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">-111.50</span><span class="p">,</span><span class="w"> </span><span class="mf">34.50</span><span class="p">]]</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="w">  </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>A <code>MultiPolygon</code> uses multiple lines to provide more than one set of polygons.</p>
+</details>
+<h4 id="geometrycollection"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 16.54 7.37-5.74L21 12.07l-9 7-9-7 1.62-1.26L12 16.54M12 14 3 7l9-7 9 7-9 7m0-11.47L6.26 7 12 11.47 17.74 7 12 2.53m0 18.94 7.37-5.74L21 17l-9 7-9-7 1.62-1.26L12 21.47"/></svg></span> GeometryCollection<a class="headerlink" href="#geometrycollection" title="Permanent link">&para;</a></h4>
+<details class="info">
+<summary><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3h2v2H5v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5h2v2H5c-1.07-.27-2-.9-2-2v-4a2 2 0 0 0-2-2H0v-2h1a2 2 0 0 0 2-2V5a2 2 0 0 1 2-2m14 0a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1v2h-1a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-2v-2h2v-5a2 2 0 0 1 2-2 2 2 0 0 1-2-2V5h-2V3h2m-7 12a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m-4 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m8 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1Z"/></svg></span> GeoJSON GeometryCollection</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GeometryCollection&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;geometries&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Point&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;coordinates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">-112.4471</span><span class="p">,</span><span class="w"> </span><span class="mf">34.5510</span><span class="p">]</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LineString&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;coordinates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">          </span><span class="p">[</span><span class="mf">-112.4470</span><span class="p">,</span><span class="w"> </span><span class="mf">34.5510</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">-112.4695</span><span class="p">,</span><span class="w">  </span><span class="mf">34.541</span><span class="p">]</span><span class="w">  </span>
+<span class="w">        </span><span class="p">]</span><span class="w"></span>
+<span class="w">  </span><span class="p">}]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>The <code>GeometryCollection</code> introduces a new set of braces <code>{}</code> which separate different geometries.</p>
+</details>
+<h3 id="feature"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 18.54 7.37-5.74L21 14.07l-9 7-9-7 1.62-1.26L12 18.54M12 16 3 9l9-7 9 7-9 7m0-11.47L6.26 9 12 13.47 17.74 9 12 4.53Z"/></svg></span> Feature<a class="headerlink" href="#feature" title="Permanent link">&para;</a></h3>
+<details class="info">
+<summary><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3h2v2H5v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5h2v2H5c-1.07-.27-2-.9-2-2v-4a2 2 0 0 0-2-2H0v-2h1a2 2 0 0 0 2-2V5a2 2 0 0 1 2-2m14 0a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1v2h-1a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-2v-2h2v-5a2 2 0 0 1 2-2 2 2 0 0 1-2-2V5h-2V3h2m-7 12a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m-4 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m8 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1Z"/></svg></span> GeoJSON Feature</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Feature&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;geometry&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Point&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;coordinates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">-112.4470</span><span class="p">,</span><span class="w"> </span><span class="mf">34.5510</span><span class="p">]</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AGIC Venue&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>A <code>Feature</code> provides a new set of <code>properties:</code> which allow metadata and annotation of the geometry.</p>
+</details>
+<h3 id="featurecollection"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 16.54 7.37-5.74L21 12.07l-9 7-9-7 1.62-1.26L12 16.54M12 14 3 7l9-7 9 7-9 7m0-11.47L6.26 7 12 11.47 17.74 7 12 2.53m0 18.94 7.37-5.74L21 17l-9 7-9-7 1.62-1.26L12 21.47"/></svg></span> FeatureCollection<a class="headerlink" href="#featurecollection" title="Permanent link">&para;</a></h3>
+<details class="info">
+<summary><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3h2v2H5v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5h2v2H5c-1.07-.27-2-.9-2-2v-4a2 2 0 0 0-2-2H0v-2h1a2 2 0 0 0 2-2V5a2 2 0 0 1 2-2m14 0a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1v2h-1a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-2v-2h2v-5a2 2 0 0 1 2-2 2 2 0 0 1-2-2V5h-2V3h2m-7 12a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m-4 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m8 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1Z"/></svg></span> GeoJSON FeatureCollection Point</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FeatureCollection&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;features&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Feature&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Location Name&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Prescott Resort and Conference Center&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;geometry&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Point&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;coordinates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">          </span><span class="mf">-112.44677424430846</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="mf">34.55109119815299</span><span class="w"></span>
+<span class="w">        </span><span class="p">]</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>A full <code>FeatureCollection</code> provides us with the ability to create multiple <code>Features</code></p>
+</details>
+<details class="info">
+<summary><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3h2v2H5v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5h2v2H5c-1.07-.27-2-.9-2-2v-4a2 2 0 0 0-2-2H0v-2h1a2 2 0 0 0 2-2V5a2 2 0 0 1 2-2m14 0a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1v2h-1a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-2v-2h2v-5a2 2 0 0 1 2-2 2 2 0 0 1-2-2V5h-2V3h2m-7 12a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m-4 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m8 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1Z"/></svg></span> GeoJSON FeatureCollection with multiple attributes</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FeatureCollection&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;features&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Feature&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;geometry&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LineString&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;coordinates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">          </span><span class="p">[</span><span class="w"></span>
+<span class="w">            </span><span class="mf">-112.44717121124268</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="mf">34.551069106918945</span><span class="w"></span>
+<span class="w">          </span><span class="p">],</span><span class="w"></span>
+<span class="w">          </span><span class="p">[</span><span class="w"></span>
+<span class="w">            </span><span class="mf">-112.45414495468138</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="mf">34.54447682068866</span><span class="w"></span>
+<span class="w">          </span><span class="p">],</span><span class="w"></span>
+<span class="w">          </span><span class="p">[</span><span class="w"></span>
+<span class="w">            </span><span class="mf">-112.46953010559082</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="mf">34.540924192549795</span><span class="w"></span>
+<span class="w">          </span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="p">]</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Feature&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;geometry&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Point&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;coordinates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">          </span><span class="mf">-112.44691371917723</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="mf">34.551210490715455</span><span class="w"></span>
+<span class="w">        </span><span class="p">]</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</details>
+<h2 id="related-json-types">Related JSON types<a class="headerlink" href="#related-json-types" title="Permanent link">&para;</a></h2>
+<h3 id="topojson">TopoJSON<a class="headerlink" href="#topojson" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/topojson/topojson" target="_blank">TopoJSON</a> is an extension of GeoJSON that encodes topology and is more efficient than GeoJSON.</p>
+<p>TopoJSON use "arcs" as a way of connecting coordinate pairs, reducing the size of the file, removing duplicate coordinates, and improving performance in the browser.</p>
+<details class="info">
+<summary>TopoJSON Schema</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Topology&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;objects&quot;</span><span class="p">:</span><span class="w"> </span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;collection&quot;</span><span class="p">:</span><span class="w"> </span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Polygon&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;arcs&quot;</span><span class="p">:[[</span><span class="mi">0</span><span class="p">]]</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;arcs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">9999</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">9999</span><span class="p">],[</span><span class="mi">-9999</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">-9999</span><span class="p">]]],</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;transform&quot;</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;scale&quot;</span><span class="p">:[</span><span class="mf">0.000004000400040004626</span><span class="p">,</span><span class="mf">0.0000030003000300024037</span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;translate&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">-112.485</span><span class="p">,</span><span class="mf">34.529</span><span class="p">]</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;bbox&quot;</span><span class="p">:[</span><span class="mf">-112.485</span><span class="p">,</span><span class="mf">34.529</span><span class="p">,</span><span class="mf">-112.445</span><span class="p">,</span><span class="mf">34.559</span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</details>
+<h3 id="newline-delimited-geojson">Newline-delimited GeoJSON<a class="headerlink" href="#newline-delimited-geojson" title="Permanent link">&para;</a></h3>
+<p><a href="https://stevage.github.io/ndgeojson/" target="_blank">Newline Delimited GeoJSON</a> is particularly convenient for transformation and processing. Each line can be read independently, parsed, and processed, without the entire file ever having to be parsed in memory, which is great for huge files.</p>
+<p>NLD GeoJSON remove "FeatureCollection"</p>
+<details class="info">
+<summary>NLD GeoJSON Schema</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;Feature&quot;</span><span class="p">,</span><span class="nt">&quot;properties&quot;</span><span class="p">:{},</span><span class="nt">&quot;geometry&quot;</span><span class="p">:{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;Point&quot;</span><span class="p">,</span><span class="nt">&quot;coordinates&quot;</span><span class="p">:[</span><span class="mf">-112.44691371917723</span><span class="p">,</span><span class="mf">34.551210490715455</span><span class="p">]}}</span><span class="w"></span>
+<span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;Feature&quot;</span><span class="p">,</span><span class="nt">&quot;properties&quot;</span><span class="p">:{},</span><span class="nt">&quot;geometry&quot;</span><span class="p">:{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;LineString&quot;</span><span class="p">,</span><span class="nt">&quot;coordinates&quot;</span><span class="p">:[[</span><span class="mf">-112.4470</span><span class="p">,</span><span class="mf">34.5510</span><span class="p">],[</span><span class="mf">-112.4695</span><span class="p">,</span><span class="mf">34.541</span><span class="p">]]}}</span><span class="w"></span>
+<span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;Feature&quot;</span><span class="p">,</span><span class="nt">&quot;properties&quot;</span><span class="p">:{},</span><span class="nt">&quot;geometry&quot;</span><span class="p">:{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;Polygon&quot;</span><span class="p">,</span><span class="nt">&quot;coordinates&quot;</span><span class="p">:[[[</span><span class="mf">-112.485</span><span class="p">,</span><span class="mf">34.529</span><span class="p">],[</span><span class="mf">-112.445</span><span class="p">,</span><span class="mf">34.529</span><span class="p">],[</span><span class="mf">-112.445</span><span class="p">,</span><span class="mf">34.559</span><span class="p">],[</span><span class="mf">-112.485</span><span class="p">,</span><span class="mf">34.559</span><span class="p">],[</span><span class="mf">-112.485</span><span class="p">,</span><span class="mf">34.529</span><span class="p">]]]}}</span><span class="w"></span>
+</code></pre></div>
+</details>
+<h2 id="geojson-webpages">GeoJSON Webpages<a class="headerlink" href="#geojson-webpages" title="Permanent link">&para;</a></h2>
+<p><a href="https://geojson.io/" target="_blank">geojson.io</a> - create, view, edit GeoJSON in your browser</p>
+<p><a href="https://python-geojson.readthedocs.io/en/latest/" target="_blank">python-geojson</a></p>
+<p><a href="https://doc.arcgis.com/en/arcgis-online/reference/geojson.htm" target="_blank">GeoJSON in ArcGIS Online</a></p>
+<p><a href="https://cloud.google.com/blog/topics/developers-practitioners/using-geojson-bigquery-geospatial-analytics" target="_blank">GeoJSON in BigQuery</a></p>
+<p><a href="https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa?hl=en" target="_blank">JSON Formatter Chrome Plugin</a></p>
+<p><a href="https://github.com/mbostock/shapefile" target="_blank">shp2json</a> cross-platform streaming parser for the ESRI Shapefile spatial data format.</p>
+<details class="question">
+<summary>Is GeoJSON really 'cloud native'?</summary>
+<p>Not really. NLD GeoJSON is closer to being cloud-native format than GeoJSON, but both have their short-comings.</p>
+<p>The ubiquity of JSON on web and its recommended use in cloud-native formats is why we're teaching it. You'll learn in the later sections GeoJSON is the most common vector for querying cloud optimized data formats. </p>
+<p><a href="https://cholmes.medium.com/an-overview-of-cloud-native-vector-c223845638e0" target="_blank">Chris Holmes recent Blog Post on 'Cloud Native Vectors'</a></p>
+<p><a href="https://www.ogc.org/blog/4609" target="_blank">Chris Holmes older blog post on 'Towards a Cloud-Native Geospatial standards baseline'</a></p>
+</details>
+<h1 id="hands-on">Hands-On<a class="headerlink" href="#hands-on" title="Permanent link">&para;</a></h1>
+<h2 id="step-1-go-to-geojsonio"><strong>Step 1</strong> Go to <a href="https://geojson.io/#">GeoJSON.io</a><a class="headerlink" href="#step-1-go-to-geojsonio" title="Permanent link">&para;</a></h2>
+<p>Play around creating different GeoJSON Geometries and Feature Collections</p>
+<ul>
+<li>Zoom into an area of interest (suggest selecting the geographic area around Prescott, AZ)</li>
+</ul>
+<figure>
+<p><a href="https://geojson.io" target="blank" rel="geojson.io"><img alt="geojson.io" src="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/geojsonio_1.png" width="700" /> </a>
+    <figcaption><a href="https://geojson.io" target="_blank">GeoJSON.io</a> features a map with either OpenStreetMap or Satellite Base Layer (left), and an example GeoJSON (right) that can be edited &amp; copy/pasted.</figcaption></p>
+</figure>
+<ul>
+<li>Practice creating points, lines, polygon, and a multi-polygons.</li>
+</ul>
+<figure>
+<p><a href="https://geojson.io" target="blank" rel="geojson.io"><img alt="geojson.io" src="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/geojsonio_2.png" width="700" /> </a>
+    <figcaption>A Polygon Feature Collection</figcaption></p>
+</figure>
+<ul>
+<li>Add additional metadata to the "properties"</li>
+</ul>
+<figure>
+<p><a href="https://geojson.io" target="blank" rel="geojson.io"><img alt="geojson.io" src="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/geojsonio_3.png" width="700" /> </a>
+    <figcaption> Create new metadata </figcaption></p>
+</figure>
+<p>In the <code>"properties" : {}</code> field, add additional metadata:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Feature&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;city name&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Prescott&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;state&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Arizona&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3h2v2H5v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5h2v2H5c-1.07-.27-2-.9-2-2v-4a2 2 0 0 0-2-2H0v-2h1a2 2 0 0 0 2-2V5a2 2 0 0 1 2-2m14 0a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1v2h-1a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-2v-2h2v-5a2 2 0 0 1 2-2 2 2 0 0 1-2-2V5h-2V3h2m-7 12a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m-4 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m8 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1Z"/></svg></span> JSON formatting</p>
+<p>JSON is very specific when it comes to line spacing, braces <code>{}</code>, quotations <code>""</code> for strings, and commas <code>,</code> at the end of a line inside a feature.</p>
+<ul>
+<li>
+<p>Try to use a text editor with JSON formatting turned on, this will help you to debug hand-written or edited JSON and GeoJSON files that have errors.</p>
+</li>
+<li>
+<p>Spaces between the colons <code>:</code> are optional but may help improve readability.</p>
+</li>
+<li>
+<p>When you add more than one new line, you must use a comma at the end. </p>
+</li>
+</ul>
+</div>
+<h2 id="step-2-export-a-geojson"><strong>Step 2</strong> Export a GeoJSON<a class="headerlink" href="#step-2-export-a-geojson" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Click on "Save" on the GeoJSON.io website</p>
+</li>
+<li>
+<p>Select the <code>GeoJSON</code> Format option.</p>
+</li>
+<li>
+<p>Download to your local computer in an easy to relocate folder</p>
+</li>
+</ul>
+<figure>
+<p><a href="https://geojson.io" target="blank" rel="geojson.io"><img alt="geojson.io" src="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/geojsonio_4.png" width="700" /> </a>
+    <figcaption> Create new metadata </figcaption></p>
+</figure>
+<h2 id="step-3-option-1-open-the-geojson-in-qgis"><strong>Step 3</strong> Option 1: Open the GeoJSON in QGIS<a class="headerlink" href="#step-3-option-1-open-the-geojson-in-qgis" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Open QGIS</p>
+</li>
+<li>
+<p>In the "Layers" then "Add Layer" and then "Add Vector Layer" </p>
+</li>
+<li>
+<p>Choose the "<strong>Source Type</strong> and select "File" for a file on your computer</p>
+</li>
+<li>
+<p>Navigate to your downloads folder and select a downloaded <code>.geojson</code> in the "<strong>Source</strong>" "<em>Vector Dataset(s)</em>" field.</p>
+</li>
+</ul>
+<figure>
+<p><a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_geojson_1.png" target="blank" rel="qgis_geojson_1"><img alt="qgis_geojson_1" src="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_geojson_1.png" width="700" /> </a>
+    <figcaption> Loading a Layer Vector from the localhost in QGIS Layers</figcaption></p>
+</figure>
+<figure>
+<p><a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_geojson_2.png" target="blank" rel="qgis_geojson_2"><img alt="qgis_geojson_2" src="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_geojson_2.png" width="700" /> </a>
+    <figcaption> You can select which feature collection you want to load
+</figcaption></p>
+</figure>
+<figure>
+<p><a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_geojson_3.png" target="blank" rel="qgis_geojson_3"><img alt="qgis_geojson_3" src="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_geojson_3.png" width="700" /> </a>
+    <figcaption> After the GeoJSON is loaded you can view it in the display</figcaption></p>
+</figure>
+<h3 id="loading-geojson-from-https">Loading GeoJSON from HTTP(S)<a class="headerlink" href="#loading-geojson-from-https" title="Permanent link">&para;</a></h3>
+<p>GeoJSON can be read directly from the web, without downloading them.</p>
+<p>Here we're going to use the <a href="https://github.com/hobuinc/usgs-lidar/blob/master/boundaries/resources.geojson" target="_blank">USGS 3DEP lidar boundaries</a> layer which is hosted on GitHub:</p>
+<p><a href="https://github.com/hobuinc/usgs-lidar/raw/master/boundaries/resources.geojson">https://github.com/hobuinc/usgs-lidar/raw/master/boundaries/resources.geojson</a> </p>
+<details class="tip">
+<summary>Using GitHub to view GeoJSON</summary>
+<p>Note how <a href="https://github.com/hobuinc/usgs-lidar/blob/master/boundaries/resources.geojson" target="_blank"><code>resources.geojson</code></a> is visible as a leaflet map directly in GitHub.</p>
+<p>GeJSON can also be visualized in <a href="#open-the-geojson-in-an-ide-like-vs-code-or-jupyter">VS Code and Jupyter Lab</a> the same way using map extensions for Folium and Leaflet.</p>
+</details>
+<figure>
+<p><a href="https://github.com/hobuinc/usgs-lidar/raw/master/boundaries/resources.geojson" target="blank" rel="qgis_3dep_1"><img alt="qgis_3dep_1" src="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_3dep_1.png" width="700" /> </a>
+    <figcaption> Loading a Layer Vector from an HTTP(s) in QGIS Layers</figcaption></p>
+</figure>
+<figure>
+<p><a href="https://github.com/hobuinc/usgs-lidar/raw/master/boundaries/resources.geojson" target="blank" rel="qgis_3dep_2"><img alt="qgis_3dep_2" src="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_3dep_2.png" width="700" /> </a>
+    <figcaption> QGIS can open the GeoJSON without downloading first. </figcaption></p>
+</figure>
+<details class="tip">
+<summary>Troubleshooting import HTTPS GeoJSON layers in QGIS</summary>
+<p><strong>Change The Environmental Setting Variables In QGIS</strong></p>
+<ol>
+<li>
+<p>Go to <strong>Setting Menu</strong> &gt;&gt; <strong>Options</strong></p>
+<p>In the <strong>Options</strong> window:</p>
+<p>Go to <strong>System</strong></p>
+</li>
+<li>
+<p>Expand <strong>Environment</strong>: </p>
+<p>Check the box to Use custom vairables</p>
+</li>
+<li>
+<p>Then add the following variables</p>
+<p>variable 1: <code>GDAL_HTTP_USERAGENT</code></p>
+<p>variable value 1: <code>Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36</code></p>
+<p>variable 2: <code>GDAL_HTTP_UNSAFESSL</code></p>
+<p>variable value 2: <code>YES</code></p>
+</li>
+<li>
+<p>Restart QGIS and them try to add the GeoJSON file link again.</p>
+</li>
+</ol>
+</details>
+<h2 id="step-3-option-2-open-the-geojson-in-arcgis-online"><strong>Step 3</strong> Option 2: Open the GeoJSON in ArcGIS Online<a class="headerlink" href="#step-3-option-2-open-the-geojson-in-arcgis-online" title="Permanent link">&para;</a></h2>
+<p>Log into ArcGIS Online and select the MapViewer</p>
+<p><a href="https://ua-gisug.maps.arcgis.com/apps/mapviewer/index.html">https://ua-gisug.maps.arcgis.com/apps/mapviewer/index.html</a></p>
+<figure>
+<p><a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/arcgis_3dep_1.png" target="blank" rel="arcgis_3dep_2"><img alt="arcgis_3dep_2" src="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/arcgis_3dep_1.png" width="700" /> </a>
+    <figcaption> ArcGIS Online can load GeoJSONs from an HTTP(s) </figcaption></p>
+</figure>
+<figure>
+<p><a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/arcgis_3dep_2.png" target="blank" rel="arcgis_3dep_2"><img alt="arcgis_3dep_2" src="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/arcgis_3dep_2.png" width="700" /> </a>
+    <figcaption> The same USGS 3DEP Boundaries in ArcGIS Online Map Viewer</figcaption></p>
+</figure>
+<h3 id="open-the-geojson-in-an-ide-like-vs-code-or-jupyter">Open the GeoJSON in an IDE (like VS Code or Jupyter)<a class="headerlink" href="#open-the-geojson-in-an-ide-like-vs-code-or-jupyter" title="Permanent link">&para;</a></h3>
+<p>VS Code can be used to view and edit JSON and GeoJSON</p>
+<figure>
+<p><a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/vscode_geojson_1.png" target="blank" rel="vscode_geojson_1"><img alt="vscode_geojson_1" src="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/vscode_geojson_1.png" width="700" /> </a>
+    <figcaption> VS Code can be used to view and edit JSON and GeoJSON</figcaption></p>
+</figure>
+<figure>
+<p><a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/vscode_geojson_2.png" target="blank" rel="vscode_geojson_2"><img alt="vscode_geojson_2" src="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/vscode_geojson_2.png" width="700" /> </a>
+    <figcaption> VS Code Extensions can be used to render the GeoJSON</figcaption></p>
+</figure>
+<figure>
+<p><a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/vscode_geojson_3.png" target="blank" rel="vscode_geojson_3"><img alt="vscode_geojson_3" src="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/vscode_geojson_3.png" width="700" /> </a>
+    <figcaption> There are a variety of extensions for both GeoJSON and Leaflet</figcaption></p>
+</figure>
+<h2 id="step-4-optional-convert-a-shp-file-to-geojson">Step 4 (Optional): Convert a SHP file to GeoJSON<a class="headerlink" href="#step-4-optional-convert-a-shp-file-to-geojson" title="Permanent link">&para;</a></h2>
+<p>QGIS can export <code>.shp</code> as <code>.geojson</code> directly.</p>
+<figure>
+<p><a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_export_1.png" target="blank" rel="qgis_export_1"><img alt="qgis_export_1" src="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_export_1.png" width="700" /> </a>
+    <figcaption> "Export" and "Save Feature As"</figcaption></p>
+</figure>
+<figure>
+<p><a href="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_export_2.png" target="blank" rel="qgis_export_2"><img alt="qgis_export_2" src="https://github.com/tyson-swetnam/agic-2022/raw/main/assets/images/qgis_export_2.png" width="700" /> </a>
+    <figcaption> If you plan to use your <code>.geojson</code> in a web map, set the CRS to <code>EPSG:4326 - WGS84</code> and the <code>COORDINATE_PRECISION</code> down to 4-6 decimals (&lt;1-4 ft GSD).
+</figcaption></p>
+</figure>
+<h1 id="additional-reading">Additional Reading<a class="headerlink" href="#additional-reading" title="Permanent link">&para;</a></h1>
+<p><a href="http://dlib.nyu.edu/awdl/isaw/isaw-papers/20-13/" target="_blank">Applied Use of JSON, GeoJSON, JSON-LD, SPARQL, and IPython Notebooks for Representing and Interacting with Small Datasets - by Sebastian Heath</a></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      2022-11-15
+    
+  </small>
+</div>
+
+              
+
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../ide/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Integrated Development Environments" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Integrated Development Environments
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../copc/" class="md-footer__link md-footer__link--next" aria-label="Next: Cloud Optimized Point Clouds" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Cloud Optimized Point Clouds
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      License CC by 4.0
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/tyson-swetnam/agic-2022.git" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.748e2769.min.js"></script>
+      
+    
+  </body>
+</html>

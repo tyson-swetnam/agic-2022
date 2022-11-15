@@ -1,0 +1,959 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="AGIC 2022 Cloud Native Data Workship">
+      
+      
+        <meta name="author" content="Tyson Lee Swetnam">
+      
+      
+        <link rel="canonical" href="https://tyson-swetnam.github.io/agic-2022/copc/">
+      
+      <link rel="icon" href="../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.2.11">
+    
+    
+      
+        <title>Cloud Optimized Point Clouds - Cloud Native Data Workshop</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.8c5ef100.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.9647289d.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,700,700i%7CRegular:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Montserrat";--md-code-font:"Regular"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#overview-of-cloud-optimized-point-cloud-copc" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Cloud Native Data Workshop" class="md-header__button md-logo" aria-label="Cloud Native Data Workshop" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 20a6 6 0 0 1-6-6c0-3.09 2.34-5.64 5.35-5.96A7.496 7.496 0 0 1 12 4a7.5 7.5 0 0 1 7.35 6A5.02 5.02 0 0 1 24 15a5 5 0 0 1-5 5H6m12.5-8H18a1 1 0 0 1-1-1v-1a2 2 0 0 0-2-2h-1.5v2H15v1a2 2 0 0 0 2 2 2 2 0 0 0-2 2v1h-1.5v2H15a2 2 0 0 0 2-2v-1a1 1 0 0 1 1-1h.5v-2m-13 0v2H6a1 1 0 0 1 1 1v1a2 2 0 0 0 2 2h1.5v-2H9v-1a2 2 0 0 0-2-2 2 2 0 0 0 2-2v-1h1.5V8H9a2 2 0 0 0-2 2v1a1 1 0 0 1-1 1h-.5Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cloud Native Data Workshop
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Cloud Optimized Point Clouds
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_3" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="agic" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_3">
+          
+            <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tyson-swetnam/agic-2022" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    agic-2022
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Cloud Native Data Workshop" class="md-nav__button md-logo" aria-label="Cloud Native Data Workshop" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 20a6 6 0 0 1-6-6c0-3.09 2.34-5.64 5.35-5.96A7.496 7.496 0 0 1 12 4a7.5 7.5 0 0 1 7.35 6A5.02 5.02 0 0 1 24 15a5 5 0 0 1-5 5H6m12.5-8H18a1 1 0 0 1-1-1v-1a2 2 0 0 0-2-2h-1.5v2H15v1a2 2 0 0 0 2 2 2 2 0 0 0-2 2v1h-1.5v2H15a2 2 0 0 0 2-2v-1a1 1 0 0 1 1-1h.5v-2m-13 0v2H6a1 1 0 0 1 1 1v1a2 2 0 0 0 2 2h1.5v-2H9v-1a2 2 0 0 0-2-2 2 2 0 0 0 2-2v-1h1.5V8H9a2 2 0 0 0-2 2v1a1 1 0 0 1-1 1h-.5Z"/></svg>
+
+    </a>
+    Cloud Native Data Workshop
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tyson-swetnam/agic-2022" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    agic-2022
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ide/" class="md-nav__link">
+        Integrated Development Environments
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Vectors
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Vectors" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Vectors
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../geojson/" class="md-nav__link">
+        GeoJSON
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Cloud Optimized Point Clouds
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Cloud Optimized Point Clouds
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview-of-cloud-optimized-point-cloud-copc" class="md-nav__link">
+    Overview of  Cloud Optimized Point Cloud (COPC)
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview of  Cloud Optimized Point Cloud (COPC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#background-on-copc" class="md-nav__link">
+    Background on COPC
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hands-on" class="md-nav__link">
+    Hands On
+  </a>
+  
+    <nav class="md-nav" aria-label="Hands On">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-go-to-copcio-viewer" class="md-nav__link">
+    Step 1 Go to COPC.io Viewer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-find-a-copc-file-on-the-internet" class="md-nav__link">
+    Step 2 Find a COPC file on the internet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copc-creation" class="md-nav__link">
+    COPC Creation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-material" class="md-nav__link">
+    Reference Material
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Rasters
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Rasters" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Rasters
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cog/" class="md-nav__link">
+        Cloud Optimized GeoTiff
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xarray/" class="md-nav__link">
+        X Array
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../zarr/" class="md-nav__link">
+        Zarr
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stac/" class="md-nav__link">
+        SpatioTemporal Asset Catalogs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Jupyter Notebook Examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Jupyter Notebook Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Jupyter Notebook Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notebooks/geojson/" class="md-nav__link">
+        GeoJSON
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notebooks/copc/" class="md-nav__link">
+        COPC
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notebooks/cog/" class="md-nav__link">
+        COG
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notebooks/xarray/" class="md-nav__link">
+        XArray
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notebooks/zarr/" class="md-nav__link">
+        Zarr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notebooks/stac/" class="md-nav__link">
+        STAC
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview-of-cloud-optimized-point-cloud-copc" class="md-nav__link">
+    Overview of  Cloud Optimized Point Cloud (COPC)
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview of  Cloud Optimized Point Cloud (COPC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#background-on-copc" class="md-nav__link">
+    Background on COPC
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hands-on" class="md-nav__link">
+    Hands On
+  </a>
+  
+    <nav class="md-nav" aria-label="Hands On">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-go-to-copcio-viewer" class="md-nav__link">
+    Step 1 Go to COPC.io Viewer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-find-a-copc-file-on-the-internet" class="md-nav__link">
+    Step 2 Find a COPC file on the internet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copc-creation" class="md-nav__link">
+    COPC Creation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-material" class="md-nav__link">
+    Reference Material
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+
+
+
+                
+  <a href="https://github.com/tyson-swetnam/agic-2022/edit/main/docs/copc.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<p><a href="#hands-on">Jump to <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.9 21.47a6.09 6.09 0 0 1-1.72-6.63l2.13-5.93a.765.765 0 0 1 1.38-.13l.31.55c.24.39.29.87.14 1.3l-.98 2.74.43.38L15.55 7c.35-.4.95-.44 1.36-.09.39.35.43.96.09 1.35l-4.45 5.03.58.51 5.45-6.18c.35-.4.96-.44 1.35-.09.4.35.44.97.07 1.36l-5.44 6.18.58.51 4.69-5.32c.35-.4.96-.44 1.35-.09s.44.96.09 1.33l-4.69 5.34.57.51 3.17-3.59c.35-.4.96-.44 1.36-.09s.43.96.08 1.33l-5.2 5.92a6.13 6.13 0 0 1-8.66.55m3.69-12.25L14.43 6c.24-.27.54-.5.87-.63l.38-.78a.947.947 0 0 0-.44-1.28.964.964 0 0 0-1.28.44l-2.51 5.14c.05.11.11.22.14.33M11 8v.05l2.78-5.67a.965.965 0 0 0-.45-1.28.951.951 0 0 0-1.28.44L9.41 6.95c.65.11 1.22.48 1.59 1.05m-6.23 6.33L6.9 8.4c.27-.75.9-1.26 1.65-1.43l2.14-4.39a.961.961 0 0 0-.44-1.28.952.952 0 0 0-1.28.44L5 9.84l-.5-.25.21-2.91c.04-.45-.14-.9-.46-1.22L3.79 5c-.47-.43-1.24-.14-1.29.5L2 11.79c-.13 2.04.77 3.99 2.35 5.21-.02-.88.11-1.79.42-2.67Z"/></svg></span> hands-on lesson <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82Z"/></svg></span> </a></p>
+<h2 id="overview-of-cloud-optimized-point-cloud-copc">Overview of <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5V9M6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9.68 13a3.758 3.758 0 0 0-7-1A3.028 3.028 0 0 0 6 17a3 3 0 0 0 3 3h6.5a2.5 2.5 0 0 0 2.5-2.5c0-1.32-1.03-2.39-2.32-2.5Z"/></svg></span> Cloud Optimized Point Cloud (COPC)<a class="headerlink" href="#overview-of-cloud-optimized-point-cloud-copc" title="Permanent link">&para;</a></h2>
+<p>A <a href="https://copc.io/" target="_blank">Cloud Optimized Point Cloud</a> is a <code>.laz</code> file <code>v1.4</code> that stores point data organized in a clustered <a href="https://en.wikipedia.org/wiki/Octree" target="_blank">octree</a>. </p>
+<p><a href="https://copc.io/copc-specification-1.0.pdf" target="_blank">COPC Specification</a></p>
+<p><a href="https://www.asprs.org/a/society/committees/standards/LAS_1_4_r13.pdf" target="_blank">LAS Standard</a></p>
+<p>A COPC contains a <a href="https://pdal.io/en/stable/tutorial/las.html?highlight=VLR#variable-length-records" target="_blank">variable length record (VLR)</a> that describe the octree organization of data that arestored in LAZ 1.4 chunks</p>
+<p>COPC would not be possible without the Open Source compression file format, <code>*.LAZ</code>, which was developed by Martin Isenburg (<a href="https://lidarmag.com/2021/10/30/in-memoriam-martin-isenburg-1972-2021/" target="_blank">RIP</a>) and is licensed by his company <a href="https://rapidlasso.de/" target="_blank">RapidLASso</a> </p>
+<p><a href="https://rapidlasso.de/" target="blank" rel="rapidlasso"><img alt="rapidlasso" src="https://rapidlasso.de/wp-content/uploads/rapidlasso_square_256x2561.png" width="100" /> </a></p>
+<h3 id="background-on-copc">Background on COPC<a class="headerlink" href="#background-on-copc" title="Permanent link">&para;</a></h3>
+<p><a href="https://hobu.co" target="blank" rel="hobu"><img alt="hobu" src="https://hobu.co/theme/images/hobulogo.png" width="100" /> </a></p>
+<p><a href="https://hobu.co/" target="_blank">HoBu Inc.</a> open source license their software for working with a wide variety of lidar data types. Hobu's portfolio now includes:</p>
+<p><a href="https://pdal.io" target="blank" rel="pdal"><img alt="pdal" src="https://pdal.io/_images/pdal_logo.png" width="100" /> </a></p>
+<p><a href="https://pdal.io" target="_blank">Point Data Abstraction Library (PDAL)</a> is a C++ library for translating and manipulating point cloud data.</p>
+<p><a href="https://entwine.io" target="blank" rel="entwine"><img alt="entwine" src="https://entwine.io/_images/entwine_logo_2-color.png" width="100" /> </a></p>
+<p><a href="https://entwine.io" target="_blank">Entwine</a> is a data organization library for massive point clouds, designed to conquer datasets of trillions of points as well as desktop-scale point clouds.</p>
+<p>HoBu was contracted by the USGS to process all of the 3DEP lidar data, these are now hosted on commercial cloud in both reqestor pays buckets and FOR FREE as Entwine Point Tiles: <a href="https://usgs.entwine.io/">https://usgs.entwine.io/</a></p>
+<ul>
+<li>
+<p>More information about these datasets can be found at <a href="https://registry.opendata.aws/usgs-lidar/">https://registry.opendata.aws/usgs-lidar/</a> and at its GitHub page at <a href="https://github.com/hobu/usgs-lidar/">https://github.com/hobu/usgs-lidar/</a></p>
+</li>
+<li>
+<p><a href="https://www.usgs.gov/faqs/can-national-map-data-be-downloaded-direct-links" target="_blank">USGS National Datasets Downloads</a></p>
+</li>
+</ul>
+<p><a href="https://copc.io" target="blank" rel="copc"><img alt="copc" src="https://copc.io/COPC_IO-Logo-2color.png" width="100" /> </a></p>
+<details class="tip">
+<summary>Installing Open Source Lidar tools</summary>
+<p><a href="https://rapidlasso.com/lastools/" target="_blank">LASTools</a> is available for both open source and a paid licensed version</p>
+<p><a href="https://pdal.io/en/stable/download.html#current-release-s" target="_blank">PDAL.io</a> - suggest using a Binary install using a package manager like <code>conda</code>.</p>
+</details>
+<h1 id="hands-on">Hands On<a class="headerlink" href="#hands-on" title="Permanent link">&para;</a></h1>
+<h2 id="step-1-go-to-copcio-viewer"><strong>Step 1</strong> Go to <a href="https://viewer.copc.io/" target="_blank">COPC.io Viewer</a><a class="headerlink" href="#step-1-go-to-copcio-viewer" title="Permanent link">&para;</a></h2>
+<p>The <a href="https://viewer.copc.io/" target="_blank">viewer.copc.io</a> is an experimental Viewer for EPT and COPC point clouds hosted over <code>https://</code></p>
+<p>The COPC viewer can dynamically view COPC processed <code>.laz</code> that are stored on the internet. </p>
+<p><a href="https://viewer.copc.io/?copc=https://data.cyverse.org/dav-anon/iplant/home/tswetnam/agic-2022/USGS_LPC_AZ_VerdeKaibab_B2_TL_2018_LAS_2019.copc.laz">COPC Viewer Example of 3DEP lidar over Prescott AZ from USGS</a></p>
+<p>These data were converted from USGS 3DEP EPT data using PDAL <code>pipeline</code> </p>
+<details class="tip">
+<summary>processing AWS EPT with PDAL</summary>
+<p>USGS 3DEP data are all freely available over <code>https://</code> using the Entwine protocol. </p>
+<p>These data can be re-processed to become COPC using PDAL's <code>writers.copc</code> function.</p>
+<p>Example <a href="https://raw.githubusercontent.com/tyson-swetnam/agic-2022/main/assets/json/ept2copc.json" target="_blank"><code>ept2copc.json</code></a> script for running directly from the internet to your computer or local host</p>
+<p><strong>Warning</strong> you must have a fast internet connection and a large amount of RAM on your machine to process large datasets (spatial extent / dense point clouds)</p>
+<div class="highlight"><pre><span></span><code>conda activate pdal
+</code></pre></div>
+<details class="info">
+<summary>ept2copc.json</summary>
+<p>Contents of <a href="https://raw.githubusercontent.com/tyson-swetnam/agic-2022/main/assets/json/ept2copc.json" target="_blank"><code>ept2copc.json</code></a> </p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;pipeline&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;bounds&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;([-12521659, -12513587], [4099398, 4107470], [1500, 3200])&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;filename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://s3-us-west-2.amazonaws.com/usgs-lidar-public/USGS_LPC_AZ_VerdeKaibab_B2_TL_2018_LAS_2019/ept.json&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;readers.ept&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;requests&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;readdata&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;filters.outlier&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;statistical&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;mean_k&quot;</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;multiplier&quot;</span><span class="p">:</span><span class="mf">2.2</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;filters.smrf&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;scalar&quot;</span><span class="p">:</span><span class="mf">1.2</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;slope&quot;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;threshold&quot;</span><span class="p">:</span><span class="mf">0.45</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;window&quot;</span><span class="p">:</span><span class="mf">16.0</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;filters.range&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;limits&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Classification![7:7],Z[2000:2700]&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;filters.hag_delaunay&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;in_srs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EPSG:3857&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;out_srs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EPSG:26912&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;reprojectUTM&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;filters.reprojection&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;filename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;USGS_LPC_AZ_VerdeKaibab_B2_TL_2018_LAS_2019.copc.laz&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;inputs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;reprojectUTM&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;writerscopc&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;writers.copc&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;filename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;USGS_LPC_AZ_VerdeKaibab_B2_TL_2018_LAS_2019_dem.tif&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;gdalopts&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tiled=yes, compress=deflate&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;inputs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;writerscopc&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;nodata&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-9999</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;output_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;min&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;resolution&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;writers.gdal&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;window_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</details>
+<div class="highlight"><pre><span></span><code>pdal -v 5 pipeline ept2copc.json
+</code></pre></div>
+<p>When the pdal script completes, you will have two files: (1) a new <code>.laz</code> file with COPC baked into it, and (2) a digital elevation model GeoTIFF generated by GDAL.</p>
+</details>
+<h2 id="step-2-find-a-copc-file-on-the-internet"><strong>Step 2</strong> Find a COPC file on the internet<a class="headerlink" href="#step-2-find-a-copc-file-on-the-internet" title="Permanent link">&para;</a></h2>
+<p>At the moment, there are not many COPC being hosted publicly online. </p>
+<p>I have staged one here: <code>https://data.cyverse.org/dav-anon/iplant/home/tswetnam/agic-2022/USGS_LPC_AZ_VerdeKaibab_B2_TL_2018_LAS_2019.copc.laz</code> </p>
+<p>You may choose to download this file to your local computer and you can view it with QGIS or some other point cloud viewer, however, that is not the point of this workshop! We want to keep our large files up on the cloud.</p>
+<p>You can use the same <code>https://</code> address to view this file in QGIS.</p>
+<h2 id="copc-creation">COPC Creation<a class="headerlink" href="#copc-creation" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/microsoft/PlanetaryComputerExamples/blob/main/datasets/3dep-lidar/3dep-lidar-copc-example.ipynb" target="_blank">Planetary Computer 3DEP Jupyter Notebook</a></p>
+<h2 id="reference-material">Reference Material<a class="headerlink" href="#reference-material" title="Permanent link">&para;</a></h2>
+<p><a href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000418.shtml" target="_blank">Library of Congress LAS definition</a></p>
+<p><a href="https://www.ogc.org/standards/LAS" target="_blank">OGC LAS Standard</a></p>
+<p><a href="https://www.usgs.gov/ngp-standards-and-specifications/lidar-base-specification-online" target="_blank">USGS NGS Lidar Base Specification</a></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      2022-11-15
+    
+  </small>
+</div>
+
+              
+
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../geojson/" class="md-footer__link md-footer__link--prev" aria-label="Previous: GeoJSON" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              GeoJSON
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../cog/" class="md-footer__link md-footer__link--next" aria-label="Next: Cloud Optimized GeoTiff" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Cloud Optimized GeoTiff
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      License CC by 4.0
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/tyson-swetnam/agic-2022.git" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.748e2769.min.js"></script>
+      
+    
+  </body>
+</html>
