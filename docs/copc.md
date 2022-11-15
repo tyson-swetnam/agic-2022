@@ -60,7 +60,7 @@ These data were converted from USGS 3DEP EPT data using PDAL `pipeline`
 
     These data can be re-processed to become COPC using PDAL's `writers.copc` function.
 
-    Example [`ept2copc.json`](../assets/json/ept2copc.json) script for running directly from the internet to your computer or local host
+    Example [`ept2copc.json`](https://raw.githubusercontent.com/tyson-swetnam/agic-2022/main/assets/json/ept2copc.json){target=_blank} script for running directly from the internet to your computer or local host
 
     **Warning** you must have a fast internet connection and a large amount of RAM on your machine to process large datasets (spatial extent / dense point clouds)
 
@@ -70,7 +70,7 @@ These data were converted from USGS 3DEP EPT data using PDAL `pipeline`
 
     ??? info "ept2copc.json"
 
-        Contents of [`ept2copc.json`](../assets/json/ept2copc.json)
+        Contents of [`ept2copc.json`](https://raw.githubusercontent.com/tyson-swetnam/agic-2022/main/assets/json/ept2copc.json){target=_blank} 
 
         ``` json
             {
